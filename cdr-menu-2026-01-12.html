@@ -104,7 +104,7 @@
 
         /* Section Styling */
         .section {
-            margin-bottom: 6mm; 
+            margin-bottom: 8mm; 
         }
 
         .section-title {
@@ -114,12 +114,9 @@
             font-weight: 600;
             text-transform: uppercase;
             margin-top: 0;
-            margin-bottom: 2mm;
+            margin-bottom: 3mm;
             letter-spacing: 0.5px;
             line-height: 1.2;
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 1mm;
         }
 
         /* Subline Width Control */
@@ -258,13 +255,21 @@
             background: transparent;
         }
 
-        .hours {
-            color: var(--text-color);
-            font-family: 'Sora', sans-serif;
-            font-weight: 700;
-            font-size: 11pt;
-            margin-bottom: 1mm;
-        }
+	        .hours {
+	            color: var(--accent-color);
+	            font-family: 'Sora', sans-serif;
+	            font-weight: 500;
+	            font-size: 11pt;
+	            margin-top: 2mm;
+	            margin-bottom: 1mm;
+	        }
+	
+	        .hours-address {
+	            color: inherit;
+	            font-family: inherit;
+	            font-weight: inherit;
+	            font-size: inherit;
+	        }
 
         .disclaimer {
             color: var(--sub-color);
@@ -314,7 +319,6 @@
         <header>
             <div class="logo-text">Casa de Rosa</div>
             <div class="subtitle">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
         </header>
 
         <!-- Removed stars -->
@@ -322,10 +326,10 @@
             <div class="specials-title">Especiales de la Semana</div>
             <div class="item">
                 <div class="item-header">
-                    <span class="item-name" style="color: var(--accent-color); font-size: 13pt;">Gofre con Pollo "Ibiza Chicken Waffles"</span>
+	                    <span class="item-name" style="color: var(--accent-color); font-size: 13pt;">Chicken Waffles "Ibiza"</span>
                     <span class="item-price">14,0</span>
                 </div>
-                <div class="item-desc">Servido con nuestra miel "Ibiza picante" y sirope de arce</div>
+	                <div class="item-desc">Gofre con pollo frito, servido con nuestra miel "Ibiza picante" y sirope de arce</div>
                 <div class="item-options addon-block" style="margin-top: 2mm;">
                     <div class="addon-header">Extras</div>
                     <div class="option-row"><span>Añadir Pollo</span><span>+3,0</span></div>
@@ -343,24 +347,53 @@
 
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Chicken Waffles</span>
-                            <span class="item-price">14,0</span>
-                        </div>
-                        <div class="item-desc">Servido con miel picante y sirope de arce</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gulash de Cerdo</span>
+                            <span class="item-name">Gulash De Cerdo</span>
                             <span class="item-price">13,0</span>
                         </div>
-                        <div class="item-desc">Servido con puré de patatas y pan clásico o de masa madre</div>
+                        <div class="item-desc">Servido con puré de patatas</div>
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Sopa de Calabaza</span>
+                            <span class="item-name">Sopa De Calabaza</span>
                             <span class="item-price">7,0</span>
                         </div>
                         <div class="item-desc">Servida con pipas de calabaza tostadas y cilantro</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">TAPAS</div>
+                    <span class="section-subtitle">Perfectas para compartir. Incluye pan clásico.</span>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Tortilla</span>
+                            <span class="item-price">4,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Aceitunas</span>
+                            <span class="item-price">4,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Burrata Con Tomate</span>
+                            <span class="item-price">12,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Sardinas</span>
+                            <span class="item-price">7,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Provolone Fundido</span>
+                            <span class="item-price">10,0</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -369,7 +402,7 @@
             <div class="column">
                 <div class="section">
                     <div class="section-title">NUESTRAS TOSTADAS</div>
-                    <span class="section-subtitle">Servidas en pan clásico o de masa madre.</span>
+	                    <span class="section-subtitle">Servidas en pan de masa madre artesanal.</span>
 
                     <div class="item">
                         <div class="item-header">
@@ -387,7 +420,7 @@
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">La Saludable</span>
+	                            <span class="item-name">La Vegana</span>
                             <span class="item-price">4,5</span>
                         </div>
                         <div class="item-desc">Hummus, remolacha y salsa de jengibre</div>
@@ -407,13 +440,34 @@
                         <div class="item-desc">Tostada de queso de cabra</div>
                     </div>
                 </div>
+
+                <div class="section">
+                    <div class="section-title">DULCES</div>
+                    <span class="section-subtitle"></span>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Cookie Casera</span>
+                            <span class="item-price">2,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Gofre/Waffle</span>
+                            <span class="item-price">4,5</span>
+                        </div>
+                        <div class="item-options">
+                            <div class="option-row"><span>Añadir Arándanos</span><span>+1,5</span></div>
+                            <div class="option-row"><span>Añadir Dulce de Leche</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Añadir Nata</span><span>+1,0</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <footer>
-            <div class="hours">Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
-            <div class="disclaimer">Todos los precios incluyen IVA. La propina es opcional y siempre se agradece.</div>
-        </footer>
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
+		        </footer>
     </div>
 
     <!-- PAGE 2: BREAKFAST, TAPAS, SWEETS (ES) -->
@@ -421,17 +475,71 @@
         <header>
             <div class="logo-text">Casa de Rosa</div>
             <div class="subtitle">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
         </header>
 
         <div class="content">
-            <!-- Left Column: Breakfast -->
+            <!-- Left Column: Hot Drinks -->
             <div class="column">
+	                <div class="section">
+	                    <div class="section-title">CAFÉS</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Cortado</span>
+	                            <span class="item-price">1,8</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Café Con Leche</span>
+	                            <span class="item-price">2,5</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Americano</span>
+	                            <span class="item-price">1,8</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Espresso</span>
+	                            <span class="item-price">1,5 / 2,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Carajillo</span>
+	                            <span class="item-price">3,0</span>
+	                        </div>
+	                    </div>
+
+                    <div class="item-options addon-block">
+                        <div class="addon-header">Extras</div>
+                        <div class="option-row"><span>Leche de Avena</span><span>+0,3</span></div>
+                        <div class="option-row"><span>Leche de Coco</span><span>+0,3</span></div>
+                    </div>
+                </div>
+
                 <div class="section">
                     <div class="section-title">DESAYUNOS</div>
-                    <!-- Updated Subtitle -->
-                    <span class="section-subtitle">Comienza el día fresco y casero.</span>
                     
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Llonguet</span>
+                            <span class="item-price">1,0</span>
+                        </div>
+                        <div class="item-options">
+	                            <div class="option-row"><span>Añadir Aguacate</span><span>+1,5</span></div>
+	                            <div class="option-row"><span>Añadir Bacon</span><span>+2,0</span></div>
+	                            <div class="option-row"><span>Añadir Jamón Cocido</span><span>+2,0</span></div>
+                            <div class="option-row"><span>Añadir Jamón Serrano</span><span>+2,0</span></div>
+                            <div class="option-row"><span>Añadir Mantequilla</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Añadir Mermelada</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Añadir Tomate</span><span>+0,5</span></div>
+                            <div class="option-row"><span>Añadir Queso</span><span>+1,0</span></div>
+                        </div>
+                    </div>
+
                     <div class="item">
                         <div class="item-header">
                             <span class="item-name">Croissant</span>
@@ -453,153 +561,10 @@
                             <div class="option-row"><span>Añadir Bacon</span><span>+2,0</span></div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Pan Artesano</span>
-                            <span class="item-price">1,0</span>
-                        </div>
-                        <!-- Updated Description -->
-                        <div class="item-desc">Elige pan clásico o de masa madre y con/sin aceite</div>
-                    </div>
-                    
-                    <div class="item-options addon-block">
-                        <div class="addon-header">Extras Desayuno</div>
-                        <div class="option-row"><span>Aceite</span><span>+0,0</span></div>
-                        <div class="option-row"><span>Aguacate</span><span>+1,5</span></div>
-                        <div class="option-row"><span>Bacon</span><span>+2,0</span></div>
-                        <div class="option-row"><span>Jamón Cocido</span><span>+2,0</span></div>
-                        <div class="option-row"><span>Jamón Serrano</span><span>+2,0</span></div>
-                        <div class="option-row"><span>Mantequilla</span><span>+1,0</span></div>
-                        <div class="option-row"><span>Mermelada</span><span>+1,0</span></div>
-                        <div class="option-row"><span>Tomate</span><span>+0,5</span></div>
-                        <div class="option-row"><span>Queso</span><span>+1,0</span></div>
-                    </div>
                 </div>
             </div>
 
-            <!-- Right Column: Tapas & Sweets -->
-            <div class="column">
-                <div class="section">
-                    <div class="section-title">TAPAS</div>
-                    <span class="section-subtitle">Incluye su elección de pan clásico o de masa madre.</span>
-
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Tortilla Española</span>
-                            <span class="item-price">4,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Aceitunas</span>
-                            <span class="item-price">4,0</span>
-                        </div>
-                    </div>
-                    <!-- Added Burrata, Removed Masa Madre -->
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Burrata con tomate</span>
-                            <span class="item-price">12,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Sardinas</span>
-                            <span class="item-price">7,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Provolone Fundido</span>
-                            <span class="item-price">10,0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">DULCES</div>
-                    <span class="section-subtitle"></span>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Cookie Casera</span>
-                            <span class="item-price">2,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gofre/Waffle Dulce</span>
-                            <span class="item-price">4,5</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span>Añadir Arándanos</span><span>+1,5</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <div class="hours">Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
-            <div class="disclaimer">Todos los precios incluyen IVA. La propina es opcional y siempre se agradece.</div>
-        </footer>
-    </div>
-
-    <!-- PAGE 3: HOT DRINKS (ES) -->
-    <div class="page">
-        <header>
-            <div class="logo-text">Casa de Rosa</div>
-            <div class="subtitle">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
-        </header>
-
-        <div class="content">
-            <!-- Left Column -->
-            <div class="column">
-                <div class="section">
-                    <div class="section-title">CAFÉS</div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Americano</span>
-                            <span class="item-price">1,8</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Café con Leche</span>
-                            <span class="item-price">2,5</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Cortado</span>
-                            <span class="item-price">1,8</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Espresso</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Simple</span><span class="item-price">1,5</span></div>
-                            <div class="option-row"><span class="item-subname">Doble</span><span class="item-price">2,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Carajillo</span>
-                            <span class="item-price">3,0</span>
-                        </div>
-                    </div>
-
-                     <div class="item-options addon-block">
-                        <div class="addon-header">Extras</div>
-                        <div class="option-row"><span>Leche de Avena</span><span>+0,3</span></div>
-                        <div class="option-row"><span>Leche de Coco</span><span>+0,3</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column -->
+            <!-- Right Column: Breakfast -->
             <div class="column">
                 <div class="section">
                     <div class="section-title">TÉ Y LATTES</div>
@@ -618,7 +583,7 @@
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Selección de Té</span>
+                            <span class="item-name">Selección De Té</span>
                             <span class="item-price">3,0</span>
                         </div>
                         <div class="item-desc">Detox<br>Negro<br>Verde</div>
@@ -630,40 +595,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="hours">Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
-            <div class="disclaimer">Todos los precios incluyen IVA. La propina es opcional y siempre se agradece.</div>
-        </footer>
-    </div>
 
-    <!-- PAGE 4: COLD DRINKS & ALCOHOL (ES) -->
-    <div class="page">
-        <header>
-            <div class="logo-text">Casa de Rosa</div>
-            <div class="subtitle">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
-        </header>
-
-        <div class="content">
-            <!-- Left Column -->
-            <div class="column">
                 <div class="section">
                     <div class="section-title">BEBIDAS</div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Agua (sin/con gas)</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Pequeña</span><span class="item-price">1,5</span></div>
-                            <div class="option-row"><span class="item-subname">Grande</span><span class="item-price">3,0</span></div>
+                            <span class="item-name">Agua Sin Gas (33cl / 1l)</span>
+                            <span class="item-price">1,5 / 4,0</span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Limonada casera</span>
+                            <span class="item-name">Agua Con Gas (50cl)</span>
+                            <span class="item-price">3,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Limonada Casera</span>
                             <span class="item-price">5,0</span>
                         </div>
                     </div>
@@ -672,34 +621,49 @@
                             <span class="item-name">Refrescos</span>
                             <span class="item-price">3,0</span>
                         </div>
-                        <div class="item-desc">Pepsi cola<br>Pepsi Max Zero<br>Aquarius<br>Lipton Limón<br>Lipton Mango Maracuyá<br>Kas Naranja</div>
-                    </div>
-                    <span class="subsection-title" style="margin-top: 2mm;">Zumos</span>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Zumo de naranja fresco</span>
-                            <span class="item-price">4,5</span>
-                        </div>
+                        <div class="item-desc">Pepsi Cola<br>Pepsi Max Zero<br>Aquarius<br>Lipton Limón<br>Lipton Mango Maracuyá<br>Kas Naranja</div>
                     </div>
                     <div class="item">
                          <div class="item-header">
-                            <span class="item-name">Zumos (botella)</span>
+                            <span class="item-name">Zumos</span>
                             <span class="item-price">2,5</span>
                         </div>
                         <div class="item-desc">Manzana<br>Melocotón<br>Piña</div>
                     </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Zumo De Naranja Fresco</span>
+                            <span class="item-price">4,5</span>
+                        </div>
                     </div>
-                    
-                 <div class="section">
+                </div>
+            </div>
+        </div>
+
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
+		        </footer>
+    </div>
+
+    <!-- PAGE 3: HOT DRINKS (ES) -->
+    <div class="page">
+        <header>
+            <div class="logo-text">Casa de Rosa</div>
+            <div class="subtitle">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
+        </header>
+
+        <div class="content">
+            <!-- Left Column -->
+            <div class="column">
+                <div class="section">
                     <div class="section-title">CERVEZAS</div>
                     <div class="item">
                         <div class="item-header">
                             <span class="item-name">Barril</span>
                         </div>
                          <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Alhambra Cañita</span><span class="item-price">2,5</span></div>
-                            <div class="option-row"><span class="item-subname">Alhambra Caña</span><span class="item-price">3,0</span></div>
-                            <div class="option-row"><span class="item-subname">Alhambra Pinta</span><span class="item-price">5,0</span></div>
+                            <div class="option-row"><span class="item-subname">Alhambra Caña / Pinta</span><span class="item-price">3,0 / 5,0</span></div>
+                            <div class="option-row"><span class="item-subname">Shandy</span><span class="item-price">3,0</span></div>
                         </div>
                     </div>
                     <div class="item">
@@ -710,81 +674,13 @@
                             <div class="option-row"><span class="item-subname">Estrella</span><span class="item-price">3,5</span></div>
                             <div class="option-row"><span class="item-subname">Moritz</span><span class="item-price">3,5</span></div>
                             <div class="option-row"><span class="item-subname">BrewDog Punk IPA</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Alhambra sin Alcohol</span><span class="item-price">3,5</span></div>
-                            <div class="option-row"><span class="item-subname">Shandy</span><span class="item-price">3,0</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column -->
-             <div class="column">
-                 <div class="section">
-                    <div class="section-title">VINOS</div>
-                    
-                    <span class="subsection-title">Vinos Blancos</span>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Bento</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">30,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Finca Olivardots</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">7,0</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">35,0</span></div>
-                        </div>
-                    </div>
-
-                    <span class="subsection-title">Cava / Espumosos</span>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Galda Cava</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">4,5</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">28,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gustave Eiffel</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Brut</span><span class="item-price">66,0</span></div>
-                            <div class="option-row"><span class="item-subname">Rosé</span><span class="item-price">70,0</span></div>
-                        </div>
-                    </div>
-
-                    <span class="subsection-title">Vinos Tintos</span>
-                     <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gazur</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">30,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Finca Olivardots</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">40,0</span></div>
+                            <div class="option-row"><span class="item-subname">Alhambra 0.0%</span><span class="item-price">3,5</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">COCKTAILS</div>
+                    <div class="section-title">CÓCTELES</div>
                     <div class="item">
                         <div class="item-header">
                             <span class="item-name">Aperol Spritz</span>
@@ -795,12 +691,6 @@
                         <div class="item-header">
                             <span class="item-name">Hugo Spritz</span>
                             <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gin &amp; Tonic</span>
-                            <span class="item-price">8,0</span>
                         </div>
                     </div>
                     <div class="item">
@@ -829,70 +719,166 @@
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Rum &amp; Pepsi</span>
-                            <span class="item-price">7,5</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Cóctel sin Alcohol</span>
+                            <span class="item-name">Cóctel Sin Alcohol</span>
                             <span class="item-price">5,0</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">APERITIVOS Y DIGESTIVOS</div>
+                    <div class="section-title">COMBINADOS</div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Baileys</span>
-                            <span class="item-price">5,0</span>
+                            <span class="item-name">Ron &amp; Cola</span>
+                            <span class="item-price">8,0</span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Bitter Kas (sin Alcohol)</span>
-                            <span class="item-price">5,0</span>
+                            <span class="item-name">Gin &amp; Tonic</span>
+                            <span class="item-price">8,0</span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Brandy</span>
-                            <span class="item-price">5,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Hierbas</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">40,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Martini Blanco</span>
-                            <span class="item-price">4,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Vermut Raimat El Polvorí</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Copa</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Botella</span><span class="item-price">35,0</span></div>
+                            <span class="item-name">Vodka &amp; Lemon</span>
+                            <span class="item-price">8,0</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Right Column -->
+            <div class="column">
+                <div class="section">
+                    <div class="section-title">VINOS</div>
+                    
+                    <span class="subsection-title">Blanco</span>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Bento</span>
+                            <span class="item-price">5,0 / 30,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Finca Olivardots</span>
+                            <span class="item-price">7,0 / 35,0</span>
+                        </div>
+                    </div>
+
+                    <span class="subsection-title">Tinto</span>
+                     <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Gazur</span>
+                            <span class="item-price">5,0 / 30,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Finca Olivardots</span>
+                            <span class="item-price">5,0 / 40,0</span>
+                        </div>
+                    </div>
+
+                    <span class="subsection-title">Cavas y Champagnes</span>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Galda Cava</span>
+                            <span class="item-price">4,5 / 28,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Gustave Eiffel</span>
+                        </div>
+                        <div class="item-options">
+                            <div class="option-row"><span class="item-subname">Blanc</span><span class="item-price">66,0</span></div>
+                            <div class="option-row"><span class="item-subname">Rosé</span><span class="item-price">70,0</span></div>
+                        </div>
+                    </div>
+                </div>
+
+	                <div class="section">
+	                    <div class="section-title">APERITIVOS</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Bitter Kas (Sin Alcohol)</span>
+	                            <span class="item-price">5,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Vermut</span>
+	                        </div>
+	                        <div class="item-options">
+	                            <div class="option-row"><span class="item-subname">Martini Bianco</span><span class="item-price">4,0 / 28,0</span></div>
+	                            <div class="option-row"><span class="item-subname">Raimat El Polvorí</span><span class="item-price">5,0 / 35,0</span></div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="section">
+	                    <div class="section-title">LICORES</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Baileys</span>
+	                            <span class="item-price">3,0 / 5,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Brandy</span>
+	                            <span class="item-price">3,0 / 5,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Hierbas</span>
+	                            <span class="item-price">3,0 / 5,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Ron</span>
+	                            <span class="item-price">3,0 / 5,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Vodka</span>
+	                            <span class="item-price">3,0 / 5,0</span>
+	                        </div>
+	                    </div>
+	                </div>
+            </div>
         </div>
         
-        <footer>
-            <div class="hours">Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
-            <div class="disclaimer">Todos los precios incluyen IVA. La propina es opcional y siempre se agradece.</div>
-        </footer>
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
+		        </footer>
+    </div>
+
+    <!-- PAGE 4: COLD DRINKS & ALCOHOL (ES) -->
+    <div class="page">
+        <header>
+            <div class="logo-text">Casa de Rosa</div>
+            <div class="subtitle">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
+        </header>
+
+        <div class="content">
+            <!-- Left Column -->
+            <div class="column">
+            </div>
+
+            <!-- Right Column -->
+             <div class="column">
+             </div>
+        </div>
+        
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</div>
+		        </footer>
     </div>
 
 
@@ -905,7 +891,6 @@
         <header>
             <div class="logo-text">Casa de Rosa</div>
             <div class="subtitle">Healthy Breakfast & Lunch | Specialty Coffee | Vinyls</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
         </header>
 
         <!-- Removed Stars -->
@@ -913,10 +898,10 @@
             <div class="specials-title">Weekly Specials</div>
             <div class="item">
                 <div class="item-header">
-                    <span class="item-name" style="color: var(--accent-color); font-size: 13pt;">Ibiza Chicken Waffles</span>
+                    <span class="item-name" style="color: var(--accent-color); font-size: 13pt;">Chicken Waffles "Ibiza"</span>
                     <span class="item-price">14,0</span>
                 </div>
-                <div class="item-desc">Served with our Ibiza hot honey and maple syrup</div>
+	                <div class="item-desc">Fried chicken on waffles, served with our "Ibiza hot honey" and maple syrup</div>
                 <div class="item-options addon-block" style="margin-top: 2mm;">
                     <div class="addon-header">Extras</div>
                     <div class="option-row"><span>Add Chicken</span><span>+3,0</span></div>
@@ -934,17 +919,10 @@
 
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Chicken Waffles</span>
-                            <span class="item-price">14,0</span>
-                        </div>
-                        <div class="item-desc">Served with hot honey and maple syrup</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
                             <span class="item-name">Pork Goulash</span>
                             <span class="item-price">13,0</span>
                         </div>
-                        <div class="item-desc">Served with mashed potatoes and artisan bread</div>
+                        <div class="item-desc">Served with mashed potatoes</div>
                     </div>
                     <div class="item">
                         <div class="item-header">
@@ -954,13 +932,49 @@
                         <div class="item-desc">Served with roasted pumpkin seeds and coriander</div>
                     </div>
                 </div>
+
+                <div class="section">
+                    <div class="section-title">TAPAS</div>
+                    <span class="section-subtitle">Perfect for sharing. Includes classic bread.</span>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Tortilla</span>
+                            <span class="item-price">4,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Olives</span>
+                            <span class="item-price">4,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Burrata &amp; Tomato</span>
+                            <span class="item-price">12,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Sardines</span>
+                            <span class="item-price">7,0</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Melted Provolone</span>
+                            <span class="item-price">10,0</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Right Column: Toasts -->
             <div class="column">
                 <div class="section">
                     <div class="section-title">SIGNATURE TOASTS</div>
-                    <span class="section-subtitle">Served on classic bread or sourdough bread.</span>
+	                    <span class="section-subtitle">Served on artesenal sourdough bread.</span>
 
                     <div class="item">
                         <div class="item-header">
@@ -978,7 +992,7 @@
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">The Healthy Mix</span>
+	                            <span class="item-name">The Vegan Mix</span>
                             <span class="item-price">4,5</span>
                         </div>
                         <div class="item-desc">Hummus, beetroot and ginger sauce</div>
@@ -998,110 +1012,6 @@
                         <div class="item-desc">Goat cheese toast</div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <footer>
-            <div class="hours">Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
-            <div class="disclaimer">All prices include VAT. Gratuity is optional and always appreciated.</div>
-        </footer>
-    </div>
-
-    <!-- PAGE 6: BREAKFAST, TAPAS, SWEETS (EN) -->
-    <div class="page">
-        <header>
-            <div class="logo-text">Casa de Rosa</div>
-        </header>
-
-        <div class="content">
-             <!-- Left Column: Breakfast -->
-             <div class="column">
-                <div class="section">
-                    <div class="section-title">BREAKFAST</div>
-                    <span class="section-subtitle">Start your day with fresh, homemade ingredients.</span>
-                    
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Croissant</span>
-                            <span class="item-price">2,0</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span>Add Butter</span><span>+1,0</span></div>
-                            <div class="option-row"><span>Add Jam</span><span>+1,0</span></div>
-                        </div>
-                    </div>
-                    <!-- Granola Removed -->
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Scrambled Eggs</span>
-                            <span class="item-price">6,0</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span>Add Avocado</span><span>+1,5</span></div>
-                            <div class="option-row"><span>Add Bacon</span><span>+2,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Artisan Bread</span>
-                            <span class="item-price">1,0</span>
-                        </div>
-                        <div class="item-desc">Classic or Sourdough</div>
-                    </div>
-                    
-                    <div class="item-options addon-block">
-                        <div class="addon-header">Breakfast Extras</div>
-                        <div class="option-row"><span>Olive Oil</span><span>+0,0</span></div>
-                        <div class="option-row"><span>Avocado</span><span>+1,5</span></div>
-                        <div class="option-row"><span>Bacon</span><span>+2,0</span></div>
-                        <div class="option-row"><span>Cooked Ham</span><span>+2,0</span></div>
-                        <div class="option-row"><span>Serrano Ham</span><span>+2,0</span></div>
-                        <div class="option-row"><span>Butter</span><span>+1,0</span></div>
-                        <div class="option-row"><span>Jam</span><span>+1,0</span></div>
-                        <div class="option-row"><span>Tomato</span><span>+0,5</span></div>
-                        <div class="option-row"><span>Cheese</span><span>+1,0</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Tapas & Sweets -->
-            <div class="column">
-                <div class="section">
-                    <div class="section-title">TAPAS</div>
-                    <span class="section-subtitle">Perfect for sharing. Includes classic bread or sourdough bread.</span>
-
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Spanish Omelette</span>
-                            <span class="item-price">4,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Olives</span>
-                            <span class="item-price">4,0</span>
-                        </div>
-                    </div>
-                    <!-- Added Burrata, Removed Sourdough & Cheese -->
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Burrata with tomato</span>
-                            <span class="item-price">12,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Sardines</span>
-                            <span class="item-price">7,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Melted Provolone</span>
-                            <span class="item-price">10,0</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="section">
                     <div class="section-title">SWEETS</div>
@@ -1114,69 +1024,66 @@
                     </div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Sweet Waffle</span>
+                            <span class="item-name">Waffle</span>
                             <span class="item-price">4,5</span>
                         </div>
                         <div class="item-options">
-                            <div class="option-row"><span>Blueberries</span><span>+1,5</span></div>
+                            <div class="option-row"><span>Add Blueberries</span><span>+1,5</span></div>
+                            <div class="option-row"><span>Add Dulce de Leche</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Add Whipped Cream</span><span>+1,0</span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <footer>
-            <div class="hours">Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
-            <div class="disclaimer">All prices include VAT. Gratuity is optional and always appreciated.</div>
-        </footer>
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
+		        </footer>
     </div>
 
-    <!-- PAGE 7: HOT DRINKS (EN) -->
+    <!-- PAGE 6: BREAKFAST, TAPAS, SWEETS (EN) -->
     <div class="page">
         <header>
             <div class="logo-text">Casa de Rosa</div>
             <div class="subtitle">Healthy Breakfast & Lunch | Specialty Coffee | Vinyls</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
         </header>
 
         <div class="content">
-            <!-- Left Column -->
+            <!-- Left Column: Coffee + Breakfast -->
             <div class="column">
-                <div class="section">
-                    <div class="section-title">COFFEE</div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Americano</span>
-                            <span class="item-price">1,8</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Café au Lait</span>
-                            <span class="item-price">2,5</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Cortado</span>
-                            <span class="item-price">1,8</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Espresso</span>
-                        </div>
-                         <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Single</span><span class="item-price">1,5</span></div>
-                            <div class="option-row"><span class="item-subname">Double</span><span class="item-price">2,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Carajillo</span>
-                            <span class="item-price">3,0</span>
-                        </div>
-                    </div>
+	                <div class="section">
+	                    <div class="section-title">COFFEE</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Cortado</span>
+	                            <span class="item-price">1,8</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Café Con Leche</span>
+	                            <span class="item-price">2,5</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Americano</span>
+	                            <span class="item-price">1,8</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Espresso</span>
+	                            <span class="item-price">1,5 / 2,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Carajillo</span>
+	                            <span class="item-price">3,0</span>
+	                        </div>
+	                    </div>
                     
                     <div class="item-options addon-block">
                         <div class="addon-header">Extras</div>
@@ -1184,12 +1091,54 @@
                         <div class="option-row"><span>Coconut Milk</span><span>+0,3</span></div>
                     </div>
                 </div>
+
+                <div class="section">
+                    <div class="section-title">BREAKFAST</div>
+                    
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Llonguet</span>
+                            <span class="item-price">1,0</span>
+                        </div>
+                        <div class="item-options">
+	                            <div class="option-row"><span>Add Avocado</span><span>+1,5</span></div>
+	                            <div class="option-row"><span>Add Bacon</span><span>+2,0</span></div>
+	                            <div class="option-row"><span>Add Cooked Ham</span><span>+2,0</span></div>
+                            <div class="option-row"><span>Add Serrano Ham</span><span>+2,0</span></div>
+                            <div class="option-row"><span>Add Butter</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Add Jam</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Add Tomato</span><span>+0,5</span></div>
+                            <div class="option-row"><span>Add Cheese</span><span>+1,0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Croissant</span>
+                            <span class="item-price">2,0</span>
+                        </div>
+                        <div class="item-options">
+                            <div class="option-row"><span>Add Butter</span><span>+1,0</span></div>
+                            <div class="option-row"><span>Add Jam</span><span>+1,0</span></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Scrambled Eggs</span>
+                            <span class="item-price">6,0</span>
+                        </div>
+                        <div class="item-options">
+                            <div class="option-row"><span>Add Avocado</span><span>+1,5</span></div>
+                            <div class="option-row"><span>Add Bacon</span><span>+2,0</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Right Column -->
+            <!-- Right Column: Tea + Cold Drinks -->
             <div class="column">
                 <div class="section">
-                    <div class="section-title">TEA & LATTES</div>
+                    <div class="section-title">TEA &amp; LATTES</div>
 
                     <div class="item">
                         <div class="item-header">
@@ -1218,35 +1167,19 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="hours">Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
-            <div class="disclaimer">All prices include VAT. Gratuity is optional and always appreciated.</div>
-        </footer>
-    </div>
 
-    <!-- PAGE 8: COLD DRINKS & ALCOHOL (EN) -->
-    <div class="page">
-        <header>
-            <div class="logo-text">Casa de Rosa</div>
-            <div class="subtitle">Healthy Breakfast & Lunch | Specialty Coffee | Vinyls</div>
-            <div class="address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</div>
-        </header>
-
-        <div class="content">
-            <!-- Left Column -->
-            <div class="column">
                 <div class="section">
                     <div class="section-title">COLD DRINKS</div>
                     <div class="item">
                         <div class="item-header">
-                            <span class="item-name">Water (still/sparkling)</span>
+                            <span class="item-name">Water (Still 33cl / 1l)</span>
+                            <span class="item-price">1,5 / 4,0</span>
                         </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Small</span><span class="item-price">1,5</span></div>
-                            <div class="option-row"><span class="item-subname">Large</span><span class="item-price">3,0</span></div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-name">Sparkling Water (50cl)</span>
+                            <span class="item-price">3,0</span>
                         </div>
                     </div>
                     <div class="item">
@@ -1260,227 +1193,264 @@
                             <span class="item-name">Soft Drinks</span>
                             <span class="item-price">3,0</span>
                         </div>
-                        <div class="item-desc">Pepsi cola<br>Pepsi Max Zero<br>Aquarius<br>Lipton Lemon<br>Lipton Mango Maracuyá<br>Kas Orange</div>
+                        <div class="item-desc">Pepsi Cola<br>Pepsi Max Zero<br>Aquarius<br>Lipton Lemon<br>Lipton Mango Maracuyá<br>Kas Orange</div>
                     </div>
-                    <span class="subsection-title" style="margin-top: 2mm;">Juices</span>
+                    <div class="item">
+                         <div class="item-header">
+                            <span class="item-name">Juices</span>
+                            <span class="item-price">2,5</span>
+                        </div>
+                        <div class="item-desc">Apple<br>Peach<br>Pineapple</div>
+                    </div>
                     <div class="item">
                         <div class="item-header">
                             <span class="item-name">Fresh Orange Juice</span>
                             <span class="item-price">4,5</span>
                         </div>
                     </div>
-                    <div class="item">
-                         <div class="item-header">
-                            <span class="item-name">Juices (bottle)</span>
-                            <span class="item-price">2,5</span>
-                        </div>
-                        <div class="item-desc">Apple<br>Peach<br>Pineapple</div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-title">BEERS</div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Alhambra</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Small Draft</span><span class="item-price">2,5</span></div>
-                            <div class="option-row"><span class="item-subname">Draught</span><span class="item-price">3,0</span></div>
-                            <div class="option-row"><span class="item-subname">Pint</span><span class="item-price">5,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Bottles</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Estrella</span><span class="item-price">3,5</span></div>
-                            <div class="option-row"><span class="item-subname">Moritz</span><span class="item-price">3,5</span></div>
-                            <div class="option-row"><span class="item-subname">BrewDog Punk IPA</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Alhambra 0.0%</span><span class="item-price">3,5</span></div>
-                            <div class="option-row"><span class="item-subname">Shandy</span><span class="item-price">3,0</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column -->
-             <div class="column">
-                 <div class="section">
-                    <div class="section-title">WINES</div>
-                    
-                    <span class="subsection-title">White Wines</span>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Bento</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">30,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Finca Olivardots</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">7,0</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">35,0</span></div>
-                        </div>
-                    </div>
-
-                    <span class="subsection-title">Cava / Sparkling</span>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Galda Cava</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">4,5</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">28,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gustave Eiffel</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Brut</span><span class="item-price">66,0</span></div>
-                            <div class="option-row"><span class="item-subname">Rosé</span><span class="item-price">70,0</span></div>
-                        </div>
-                    </div>
-
-                    <span class="subsection-title">Red Wines</span>
-                     <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gazur</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">30,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Finca Olivardots</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">40,0</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">COCKTAILS</div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Aperol Spritz</span>
-                            <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Hugo Spritz</span>
-                            <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Gin &amp; Tonic</span>
-                            <span class="item-price">8,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Bloody Mary</span>
-                            <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Mojito</span>
-                            <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Margarita</span>
-                            <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Moscow Mule</span>
-                            <span class="item-price">9,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Rum &amp; Pepsi</span>
-                            <span class="item-price">7,5</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Alcohol-free Cocktail</span>
-                            <span class="item-price">5,0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">APERITIFS &amp; DIGESTIFS</div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Baileys</span>
-                            <span class="item-price">5,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Bitter Kas (non-alcoholic)</span>
-                            <span class="item-price">5,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Brandy</span>
-                            <span class="item-price">5,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Hierbas</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">40,0</span></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Martini Blanco</span>
-                            <span class="item-price">4,0</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-name">Vermut Raimat El Polvorí</span>
-                        </div>
-                        <div class="item-options">
-                            <div class="option-row"><span class="item-subname">Glass</span><span class="item-price">5,0</span></div>
-                            <div class="option-row"><span class="item-subname">Bottle</span><span class="item-price">35,0</span></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
+		        </footer>
+    </div>
+
+	    <!-- PAGE 7: ALCOHOL (EN) -->
+	    <div class="page">
+	        <header>
+	            <div class="logo-text">Casa de Rosa</div>
+	            <div class="subtitle">Healthy Breakfast & Lunch | Specialty Coffee | Vinyls</div>
+	        </header>
+	
+	        <div class="content">
+	            <!-- Left Column -->
+	            <div class="column">
+	                <div class="section">
+	                    <div class="section-title">BEERS</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Alhambra</span>
+	                        </div>
+	                        <div class="item-options">
+	                            <div class="option-row"><span class="item-subname">Draught / Pint</span><span class="item-price">3,0 / 5,0</span></div>
+	                            <div class="option-row"><span class="item-subname">Shandy</span><span class="item-price">3,0</span></div>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Bottles</span>
+	                        </div>
+	                        <div class="item-options">
+	                            <div class="option-row"><span class="item-subname">Estrella</span><span class="item-price">3,5</span></div>
+	                            <div class="option-row"><span class="item-subname">Moritz</span><span class="item-price">3,5</span></div>
+	                            <div class="option-row"><span class="item-subname">BrewDog Punk IPA</span><span class="item-price">5,0</span></div>
+	                            <div class="option-row"><span class="item-subname">Alhambra 0.0%</span><span class="item-price">3,5</span></div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="section">
+	                    <div class="section-title">COCKTAILS</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Aperol Spritz</span>
+	                            <span class="item-price">9,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Hugo Spritz</span>
+	                            <span class="item-price">9,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Bloody Mary</span>
+	                            <span class="item-price">9,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Mojito</span>
+	                            <span class="item-price">9,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Margarita</span>
+	                            <span class="item-price">9,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Moscow Mule</span>
+	                            <span class="item-price">9,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Alcohol-Free Cocktail</span>
+	                            <span class="item-price">5,0</span>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div class="section">
+	                    <div class="section-title">LONG DRINKS</div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Rum &amp; Cola</span>
+	                            <span class="item-price">8,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Gin &amp; Tonic</span>
+	                            <span class="item-price">8,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Vodka &amp; Lemon</span>
+	                            <span class="item-price">8,0</span>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	
+	            <!-- Right Column -->
+	            <div class="column">
+	                <div class="section">
+	                    <div class="section-title">WINES</div>
+	                    
+	                    <span class="subsection-title">White</span>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Bento</span>
+	                            <span class="item-price">5,0 / 30,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Finca Olivardots</span>
+	                            <span class="item-price">7,0 / 35,0</span>
+	                        </div>
+	                    </div>
+	
+	                    <span class="subsection-title">Red</span>
+	                     <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Gazur</span>
+	                            <span class="item-price">5,0 / 30,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Finca Olivardots</span>
+	                            <span class="item-price">5,0 / 40,0</span>
+	                        </div>
+	                    </div>
+	
+	                    <span class="subsection-title">Cava &amp; Champagne</span>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Galda Cava</span>
+	                            <span class="item-price">4,5 / 28,0</span>
+	                        </div>
+	                    </div>
+	                    <div class="item">
+	                        <div class="item-header">
+	                            <span class="item-name">Gustave Eiffel</span>
+	                        </div>
+	                        <div class="item-options">
+	                            <div class="option-row"><span class="item-subname">Blanc</span><span class="item-price">66,0</span></div>
+	                            <div class="option-row"><span class="item-subname">Rosé</span><span class="item-price">70,0</span></div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+		                <div class="section">
+		                    <div class="section-title">APERITIFS</div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Bitter Kas (Non-Alcoholic)</span>
+		                            <span class="item-price">5,0</span>
+		                        </div>
+		                    </div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Vermut</span>
+		                        </div>
+		                        <div class="item-options">
+		                            <div class="option-row"><span class="item-subname">Martini Bianco</span><span class="item-price">4,0 / 28,0</span></div>
+		                            <div class="option-row"><span class="item-subname">Raimat El Polvorí</span><span class="item-price">5,0 / 35,0</span></div>
+		                        </div>
+		                    </div>
+		                </div>
+	
+		                <div class="section">
+		                    <div class="section-title">LIQUORS</div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Baileys</span>
+		                            <span class="item-price">3,0 / 5,0</span>
+		                        </div>
+		                    </div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Brandy</span>
+		                            <span class="item-price">3,0 / 5,0</span>
+		                        </div>
+		                    </div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Hierbas</span>
+		                            <span class="item-price">3,0 / 5,0</span>
+		                        </div>
+		                    </div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Rum</span>
+		                            <span class="item-price">3,0 / 5,0</span>
+		                        </div>
+		                    </div>
+		                    <div class="item">
+		                        <div class="item-header">
+		                            <span class="item-name">Vodka</span>
+		                            <span class="item-price">3,0 / 5,0</span>
+		                        </div>
+		                    </div>
+		                </div>
+	            </div>
+	        </div>
         
-        <footer>
-            <div class="hours">Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
-            <div class="disclaimer">All prices include VAT. Gratuity is optional and always appreciated.</div>
-        </footer>
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
+		        </footer>
+    </div>
+
+	    <!-- PAGE 8: (EMPTY) (EN) -->
+	    <div class="page">
+	        <header>
+	            <div class="logo-text">Casa de Rosa</div>
+	            <div class="subtitle">Healthy Breakfast & Lunch | Specialty Coffee | Vinyls</div>
+	        </header>
+	
+	        <div class="content">
+	            <!-- Left Column -->
+	            <div class="column">
+	            </div>
+	
+	            <!-- Right Column -->
+	             <div class="column">
+	            </div>
+	        </div>
+        
+		        <footer>
+		            <div class="hours"><span class="hours-address">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</span><br>Mon-Fri 9:00-18:00 | Sat-Sun Closed</div>
+		        </footer>
     </div>
 
 </body>
