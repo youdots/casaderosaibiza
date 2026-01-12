@@ -11,6 +11,7 @@
     :root {
       --canvas: #e2d9d5;
       --accent: #a0471a;
+      --pad: 22px;
     }
     * { box-sizing: border-box; }
     body {
@@ -32,19 +33,21 @@
     }
     header {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 16px;
       align-items: center;
-      padding: 22px 22px 18px;
+      padding: 22px var(--pad) 18px;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
+      min-width: 0;
     }
     .brand img {
       height: 96px;
       width: auto;
+      max-width: 100%;
     }
     .title {
       margin: 0 0 8px;
@@ -78,6 +81,10 @@
       margin-top: 8px;
       display: block;
       opacity: 0.8;
+    }
+    .tagline.updated-mobile {
+      display: none;
+      margin-top: 0;
     }
     .inline-link {
       color: inherit;
@@ -118,7 +125,7 @@
       user-select: none;
     }
     .summary {
-      padding: 0 22px 10px;
+      padding: 0 var(--pad) 10px;
       font-size: 14px;
       display: block;
       color: var(--accent);
@@ -163,14 +170,26 @@
       color: var(--accent);
     }
     @media (max-width: 720px) {
+      :root { --pad: 18px; }
       header {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         justify-items: stretch;
       }
-      .controls { width: auto; justify-content: flex-end; }
+      .brand img {
+        height: auto;
+        max-height: 72px;
+        max-width: 58vw;
+      }
+      .controls {
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+      }
+      .lang { flex-shrink: 0; }
       .summary-top { grid-template-columns: 1fr; row-gap: 6px; }
-      .summary-top .tagline.updated { order: -1; }
-      .tagline.updated { margin-bottom: 24px; }
+      .summary-top .tagline.updated { display: none; }
+      .tagline.updated-mobile { display: block; margin-bottom: 24px; }
     }
   </style>
 </head>
@@ -196,6 +215,7 @@
         <a class="inline-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noreferrer">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
       </p>
       <p class="tagline hours">Mon-Fri 9:00-18:00 · Sat-Sun Closed</p>
+      <div class="tagline updated updated-mobile">Updated 12 Jan 2026</div>
     </div>
     <div class="summary" data-lang-copy="es" style="display:none">
       <div class="summary-top">
@@ -206,6 +226,7 @@
         <a class="inline-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noreferrer">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
       </p>
       <p class="tagline hours">Lun-Vie 9:00-18:00 · Sáb-Dom Cerrado</p>
+      <div class="tagline updated updated-mobile">Menú actualizado 12 Ene 2026</div>
     </div>
 
     <section class="viewer">
@@ -249,7 +270,8 @@
         ? navigator.languages
         : [navigator.language];
 
-      return locales.some(isSpanishLocale) ? 'es' : 'en';
+      const primary = locales[0];
+      return isSpanishLocale(primary) ? 'es' : 'en';
     }
 
     function setLanguage(lang) {
