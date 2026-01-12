@@ -17,7 +17,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500;600&display=swap" rel="stylesheet">
-  <script src="vendor/pdfjs/pdf.min.js" defer></script>
   <style>
     :root {
       --canvas: #e2d9d5;
@@ -124,18 +123,6 @@
       gap: 12px;
       align-items: center;
     }
-    .mobile-actions {
-      display: none;
-      padding: 0 var(--pad) 10px;
-      justify-content: flex-end;
-      gap: 12px;
-      align-items: center;
-      font-size: 20px;
-      line-height: 1.6;
-      font-weight: 400;
-      opacity: 0.8;
-      white-space: nowrap;
-    }
     .lang {
       border: none;
       background: transparent;
@@ -192,27 +179,29 @@
       overflow: hidden;
       height: 100%;
     }
-    .pdf-viewport {
-      position: relative;
+    .panel {
+      display: none;
+      height: 100%;
+    }
+    .panel.active {
+      display: block;
+    }
+    .pdf-frame {
       width: 100%;
       height: 100%;
+      border: none;
+      border-radius: 0;
       overflow: hidden;
       background: var(--canvas);
-      touch-action: none;
     }
-    .pdf-pages {
-      position: absolute;
-      left: 0;
-      top: 0;
-      transform-origin: 0 0;
-      will-change: transform;
+    .viewer .pdf-frame {
+      height: calc(100% - var(--viewer-gap));
     }
-    canvas.pdf-canvas {
-      display: block;
+    .pdf-frame object {
+      width: 100%;
+      height: 100%;
+      border: none;
       background: var(--canvas);
-    }
-    .pdf-gap {
-      height: 14px;
     }
     .fallback {
       padding: 18px 14px;
@@ -238,7 +227,6 @@
       }
       .lang { flex-shrink: 0; }
       .actions { display: none; }
-      .mobile-actions { display: flex; }
       .summary-top { grid-template-columns: 1fr; row-gap: 6px; }
       .summary-top .tagline.updated { display: none; }
       .tagline.updated-mobile { display: block; margin-bottom: 24px; }
@@ -268,13 +256,6 @@
         </span>
       </div>
     </header>
-    <div class="mobile-actions" role="toolbar" aria-label="Menu actions">
-      <button class="action" type="button" data-action="fullscreen">Fullscreen</button>
-      <span class="sep" aria-hidden="true">|</span>
-      <a class="action" data-action="download" href="CdR-Menu-2026-01-12-EN.pdf" download>Download</a>
-      <span class="sep" aria-hidden="true">|</span>
-      <button class="action" type="button" data-action="share" style="display:none">Share</button>
-    </div>
 
     <div class="summary" data-lang-copy="en">
       <div class="summary-top">
@@ -300,21 +281,49 @@
     </div>
 
     <section class="viewer">
-      <div class="pdf-viewport" id="pdfViewport" aria-label="Menu PDF viewer">
-        <div class="pdf-pages" id="pdfPages"></div>
+      <div class="panel active" id="panel-en">
+        <div class="pdf-frame">
+          <object data="CdR-Menu-2026-01-12-EN.pdf#view=FitH" type="application/pdf" aria-label="Casa de Rosa menu (English)">
+            <div class="fallback">
+              The menu PDF may not load in this browser. <a href="CdR-Menu-2026-01-12-EN.pdf">Open the English menu</a>.
+            </div>
+          </object>
+        </div>
       </div>
-      <div class="fallback" id="pdfFallback" style="display:none">
-        PDF preview failed to load. <a id="pdfFallbackLink" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noreferrer">Open menu</a>.
+      <div class="panel" id="panel-es">
+        <div class="pdf-frame">
+          <object data="CdR-Menu-2026-01-12-ES.pdf#view=FitH" type="application/pdf" aria-label="Casa de Rosa menú (Español)">
+            <div class="fallback">
+              Es posible que el PDF no cargue en este navegador. <a href="CdR-Menu-2026-01-12-ES.pdf">Abrir el menú en español</a>.
+            </div>
+          </object>
+        </div>
       </div>
     </section>
 
   </div>
 
   <script>
-    const PDF_FILES = {
-      en: 'CdR-Menu-2026-01-12-EN.pdf',
-      es: 'CdR-Menu-2026-01-12-ES.pdf',
+    const buttons = Array.from(document.querySelectorAll('.lang'));
+    const panels = {
+      en: document.getElementById('panel-en'),
+      es: document.getElementById('panel-es'),
     };
+    const summaries = Array.from(document.querySelectorAll('[data-lang-copy]'));
+
+    function isSpanishLocale(locale) {
+      const value = String(locale || '').toLowerCase();
+      return value.startsWith('es') || value.startsWith('ca');
+    }
+
+    function getDefaultLanguage() {
+      const locales = Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language];
+
+      const primary = locales[0];
+      return isSpanishLocale(primary) ? 'es' : 'en';
+    }
 
     const actionLabels = {
       en: {
@@ -331,155 +340,13 @@
       },
     };
 
-    const buttons = Array.from(document.querySelectorAll('.lang'));
-    const summaries = Array.from(document.querySelectorAll('[data-lang-copy]'));
-    const pdfViewport = document.getElementById('pdfViewport');
-    const pdfPages = document.getElementById('pdfPages');
-    const pdfFallback = document.getElementById('pdfFallback');
-    const pdfFallbackLink = document.getElementById('pdfFallbackLink');
-
-    function isSpanishLocale(locale) {
-      const value = String(locale || '').toLowerCase();
-      return value.startsWith('es') || value.startsWith('ca');
-    }
-
-    function getDefaultLanguage() {
-      const locales = Array.isArray(navigator.languages) && navigator.languages.length
-        ? navigator.languages
-        : [navigator.language];
-      return isSpanishLocale(locales[0]) ? 'es' : 'en';
-    }
-
-    function getPdfjs() {
-      // `pdfjsLib` is provided by `vendor/pdfjs/pdf.min.js`.
-      // eslint-disable-next-line no-undef
-      return typeof pdfjsLib !== 'undefined' ? pdfjsLib : null;
-    }
-
-    const view = {
-      scale: 1,
-      tx: 0,
-      ty: 0,
-      fitScale: 1,
-      contentWidth: 0,
-      contentHeight: 0,
-    };
-
-    const gesture = {
-      pointers: new Map(),
-      start: null,
-    };
-
-    let loadToken = 0;
-
-    function applyTransform() {
-      pdfPages.style.transform = `translate(${view.tx}px, ${view.ty}px) scale(${view.scale})`;
-    }
-
-    function clamp(value, min, max) {
-      return Math.min(max, Math.max(min, value));
-    }
-
-    function clampPan() {
-      const vw = pdfViewport.clientWidth;
-      const vh = pdfViewport.clientHeight;
-      const scaledW = view.contentWidth * view.scale;
-      const scaledH = view.contentHeight * view.scale;
-      if (scaledW <= vw) {
-        view.tx = Math.floor((vw - scaledW) / 2);
-      } else {
-        view.tx = clamp(view.tx, vw - scaledW, 0);
-      }
-
-      if (scaledH <= vh) {
-        view.ty = 0;
-      } else {
-        view.ty = clamp(view.ty, vh - scaledH, 0);
-      }
-    }
-
-    function fitToViewport(preserveZoom = false) {
-      const vw = pdfViewport.clientWidth;
-      if (!vw || !view.contentWidth) return;
-
-      const zoomFactor = preserveZoom ? (view.scale / view.fitScale) : 1;
-      view.fitScale = (vw / view.contentWidth);
-      view.scale = clamp(view.fitScale * zoomFactor, view.fitScale * 0.5, view.fitScale * 4);
-
-      view.tx = Math.max(0, Math.floor((vw - (view.contentWidth * view.scale)) / 2));
-      clampPan();
-      applyTransform();
-    }
-
-    async function renderPdf(url) {
-      const token = ++loadToken;
-      pdfFallback.style.display = 'none';
-      pdfFallbackLink.href = url;
-
-      const pdfjs = getPdfjs();
-      if (!pdfjs) {
-        pdfFallback.style.display = 'block';
-        return;
-      }
-
-      pdfjs.GlobalWorkerOptions.workerSrc = 'vendor/pdfjs/pdf.worker.min.js';
-
-      try {
-        const doc = await pdfjs.getDocument({ url }).promise;
-        if (token !== loadToken) return;
-
-        pdfPages.innerHTML = '';
-        view.contentWidth = 0;
-        view.contentHeight = 0;
-
-        const dpr = window.devicePixelRatio || 1;
-        const gap = 14;
-
-        for (let i = 1; i <= doc.numPages; i++) {
-          const page = await doc.getPage(i);
-          if (token !== loadToken) return;
-
-          const viewport = page.getViewport({ scale: 1 });
-          const renderViewport = page.getViewport({ scale: dpr });
-
-          const canvas = document.createElement('canvas');
-          canvas.className = 'pdf-canvas';
-          canvas.width = Math.floor(renderViewport.width);
-          canvas.height = Math.floor(renderViewport.height);
-          canvas.style.width = `${Math.floor(viewport.width)}px`;
-          canvas.style.height = `${Math.floor(viewport.height)}px`;
-
-          const ctx = canvas.getContext('2d', { alpha: false });
-          await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
-
-          pdfPages.appendChild(canvas);
-          view.contentWidth = Math.max(view.contentWidth, viewport.width);
-          view.contentHeight += viewport.height;
-
-          if (i !== doc.numPages) {
-            const spacer = document.createElement('div');
-            spacer.className = 'pdf-gap';
-            spacer.style.height = `${gap}px`;
-            pdfPages.appendChild(spacer);
-            view.contentHeight += gap;
-          }
-        }
-
-        view.scale = 1;
-        view.tx = 0;
-        view.ty = 0;
-        applyTransform();
-        fitToViewport(false);
-      } catch {
-        if (token !== loadToken) return;
-        pdfFallback.style.display = 'block';
-      }
-    }
-
     function setLanguage(lang) {
       const normalized = lang === 'es' ? 'es' : 'en';
+      const downloadLink = document.querySelector('[data-action="download"]');
+      const shareBtn = document.querySelector('[data-action="share"]');
+      const fullscreenBtn = document.querySelector('[data-action="fullscreen"]');
+      const pdfSrc = normalized === 'es' ? 'CdR-Menu-2026-01-12-ES.pdf' : 'CdR-Menu-2026-01-12-EN.pdf';
       const labels = actionLabels[normalized];
-      const pdfSrc = PDF_FILES[normalized];
 
       buttons.forEach(b => {
         const isActive = b.getAttribute('data-lang') === normalized;
@@ -487,30 +354,27 @@
         b.classList.toggle('active', isActive);
       });
 
+      Object.entries(panels).forEach(([key, panel]) => {
+        panel.classList.toggle('active', key === normalized);
+      });
+
       summaries.forEach(block => {
         const match = block.getAttribute('data-lang-copy') === normalized;
         block.style.display = match ? 'block' : 'none';
       });
 
-      document.querySelectorAll('[data-action="download"]').forEach(link => {
-        if (!(link instanceof HTMLAnchorElement)) return;
-        link.href = pdfSrc;
-        link.textContent = labels.download;
-      });
-
-      document.querySelectorAll('[data-action="fullscreen"]').forEach(btn => {
-        btn.textContent = labels.fullscreen;
-      });
-
-      document.querySelectorAll('[data-action="share"]').forEach(btn => {
-        btn.textContent = labels.share;
-        btn.style.display = navigator.share ? '' : 'none';
-      });
+      if (downloadLink) downloadLink.setAttribute('href', pdfSrc);
+      if (downloadLink && labels) downloadLink.textContent = labels.download;
+      if (fullscreenBtn && labels) fullscreenBtn.textContent = labels.fullscreen;
+      if (shareBtn && labels) shareBtn.textContent = labels.share;
+      if (shareBtn) {
+        shareBtn.style.display = navigator.share ? '' : 'none';
+        shareBtn.dataset.pdf = pdfSrc;
+      }
+      if (fullscreenBtn) fullscreenBtn.dataset.pdf = pdfSrc;
 
       document.documentElement.lang = normalized;
-      document.documentElement.dataset.shareTitle = labels.shareTitle;
-
-      renderPdf(pdfSrc);
+      document.documentElement.dataset.shareTitle = labels ? labels.shareTitle : 'Casa de Rosa Menu';
     }
 
     buttons.forEach(btn => {
@@ -520,107 +384,7 @@
       });
     });
 
-    function updateOnResize() {
-      fitToViewport(true);
-    }
-
-    window.addEventListener('resize', updateOnResize);
-
-    function getCenterAndDistance() {
-      const pts = Array.from(gesture.pointers.values());
-      const a = pts[0];
-      const b = pts[1];
-      const cx = (a.x + b.x) / 2;
-      const cy = (a.y + b.y) / 2;
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
-      return { cx, cy, dist: Math.hypot(dx, dy) };
-    }
-
-    function screenToContent(x, y) {
-      return {
-        x: (x - view.tx) / view.scale,
-        y: (y - view.ty) / view.scale,
-      };
-    }
-
-    pdfViewport.addEventListener('pointerdown', (event) => {
-      event.preventDefault();
-      pdfViewport.setPointerCapture(event.pointerId);
-      gesture.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-
-      if (gesture.pointers.size === 1) {
-        gesture.start = { type: 'pan', x: event.clientX, y: event.clientY, tx: view.tx, ty: view.ty };
-      }
-
-      if (gesture.pointers.size === 2) {
-        const { cx, cy, dist } = getCenterAndDistance();
-        gesture.start = {
-          type: 'pinch',
-          cx,
-          cy,
-          dist,
-          scale: view.scale,
-          tx: view.tx,
-          ty: view.ty,
-          anchor: {
-            x: (cx - view.tx) / view.scale,
-            y: (cy - view.ty) / view.scale,
-          },
-        };
-      }
-    }, { passive: false });
-
-    pdfViewport.addEventListener('pointermove', (event) => {
-      if (!gesture.pointers.has(event.pointerId)) return;
-      event.preventDefault();
-      gesture.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-
-      if (!gesture.start) return;
-
-      if (gesture.start.type === 'pan' && gesture.pointers.size === 1) {
-        const dx = event.clientX - gesture.start.x;
-        const dy = event.clientY - gesture.start.y;
-        view.tx = gesture.start.tx + dx;
-        view.ty = gesture.start.ty + dy;
-        clampPan();
-        applyTransform();
-      }
-
-      if (gesture.start.type === 'pinch' && gesture.pointers.size === 2) {
-        const { cx, cy, dist } = getCenterAndDistance();
-        const nextScale = clamp(gesture.start.scale * (dist / gesture.start.dist), view.fitScale * 0.5, view.fitScale * 4);
-        const anchor = gesture.start.anchor;
-        view.scale = nextScale;
-        view.tx = cx - (anchor.x * view.scale);
-        view.ty = cy - (anchor.y * view.scale);
-        clampPan();
-        applyTransform();
-      }
-    }, { passive: false });
-
-    function endPointer(event) {
-      if (gesture.pointers.has(event.pointerId)) {
-        gesture.pointers.delete(event.pointerId);
-      }
-      if (gesture.pointers.size === 1) {
-        const remaining = Array.from(gesture.pointers.values())[0];
-        gesture.start = { type: 'pan', x: remaining.x, y: remaining.y, tx: view.tx, ty: view.ty };
-      } else if (gesture.pointers.size === 0) {
-        gesture.start = null;
-      }
-    }
-
-    pdfViewport.addEventListener('pointerup', endPointer);
-    pdfViewport.addEventListener('pointercancel', endPointer);
-
-    pdfViewport.addEventListener('wheel', (event) => {
-      // Keep scrolling inside the viewer even though the page itself doesn't scroll.
-      event.preventDefault();
-      view.ty -= event.deltaY;
-      clampPan();
-      applyTransform();
-    }, { passive: false });
+    setLanguage(getDefaultLanguage());
 
     document.addEventListener('click', async (event) => {
       const target = event.target;
@@ -630,12 +394,12 @@
 
       if (action === 'fullscreen') {
         event.preventDefault();
+        const frame = document.querySelector('.panel.active .pdf-frame');
+        if (!frame) return;
         if (document.fullscreenElement) {
           await document.exitFullscreen();
-          return;
-        }
-        if (pdfViewport.requestFullscreen) {
-          await pdfViewport.requestFullscreen();
+        } else if (frame.requestFullscreen) {
+          await frame.requestFullscreen();
         }
       }
 
@@ -650,8 +414,6 @@
         }
       }
     });
-
-    setLanguage(getDefaultLanguage());
   </script>
 </body>
 </html>
