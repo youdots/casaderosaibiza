@@ -1,0 +1,99 @@
+Handle,SKU,Name,Category,Description,Sold by weight,Option 1 name,Option 1 value,Option 2 name,Option 2 value,Option 3 name,Option 3 value,Cost,Barcode,SKU of included item,Quantity of included item,Track stock,Available for sale [Casa de Rosa],Price [Casa de Rosa],In stock [Casa de Rosa],Low stock [Casa de Rosa],"Modifier - ""Café Extras""","Modifier - ""Desayuno Extras""","Modifier - ""Dulces Extras""","Modifier - ""Chicken Waffles Extras""","Tax - ""IVA"" (10%)","Tax - ""IVA to-go"" (21%)"
+7up,10006,7up (33cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,2.00,,,N,N,N,N,N,Y
+"aceitunas,-pan",55,Aceitunas,Tapas,,N,,,,,,,1.00,,,,N,Y,4.00,,,N,N,N,N,Y,N
+agua-75cl,10032,Agua Font Vella (75cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,1.50,,,N,N,N,N,N,Y
+aguacate-crema-de-queso,10061,Aguacate y Crema de Queso,Tostadas,,N,,,,,,,0.00,,,,N,Y,5.50,,,N,Y,N,N,Y,N
+alhabra-caña,10003,Alhambra Caña,Cervezas,,N,,,,,,,0.34,,,,N,Y,3.00,,,N,N,N,N,Y,N
+canita,10059,Alhambra Cañita,Cervezas,,N,,,,,,,0.00,,,,N,Y,2.50,,,N,N,N,N,Y,N
+alhambra-33cl,10031,Alhambra Lata (33cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,2.00,,,N,N,N,N,N,Y
+alhambra-pinta,10034,Alhambra Pinta,Cervezas,,N,,,,,,,0.86,,,,N,Y,5.00,,,N,N,N,N,Y,N
+alhambra-sin-alcohol,26,Alhambra sin Alcohol (Botella),Cervezas,,N,,,,,,,0.86,,,,N,Y,3.50,,,N,N,N,N,Y,N
+americano,13,Americano,Bebidas Calientes,,N,,,,,,,0.20,,,,N,Y,1.80,,,Y,N,N,N,Y,N
+aperol-spritz,10045,Aperol Spritz,Cócteles,,N,,,,,,,0.00,,,,N,Y,9.00,,,N,N,N,N,Y,N
+aquarius-(38cl),2015,Aquarius (38cl),Bebidas Frio,,N,,,,,,,0.66,,,,Y,Y,3.00,19.000,,N,N,N,N,Y,N
+aquarius,10023,Aquarius Lata (33cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,2.00,,,N,N,N,N,N,Y
+baileys,10065,Baileys,Licores,,N,Tamano,Chupito,,,,,0.00,,,,N,Y,3.00,,,N,N,N,N,Y,N
+baileys,10064,,,,,,Copa,,,,,0.00,,,,,Y,5.00,,,N,N,N,N,,
+bitter-kas-(sin-alcohol),2005,Bitter Kas (Sin Alcohol),Aperitivos,,N,,,,,,,0.90,,,,Y,Y,3.50,24.000,,N,N,N,N,Y,N
+blanco:-bento-botella,10004,Blanco: Bento,Vinos y Cavas,,N,Tamano,Botella,,,,,6.50,,,,N,Y,26.00,,,N,N,N,N,Y,N
+blanco:-bento-botella,10005,,,,,,Copa,,,,,1.30,,,,,Y,5.50,,,N,N,N,N,,
+blanco:-finca-olivardots-botella,10008,Blanco: Finca Olivardots,Vinos y Cavas,,N,Tamano,Botella,,,,,8.90,,,,N,Y,35.00,,,N,N,N,N,Y,N
+blanco:-finca-olivardots-botella,10009,,,,,,Copa,,,,,1.78,,,,,Y,7.00,,,N,N,N,N,,
+bloody-mary,10048,Bloody Mary,Cócteles,,N,,,,,,,0.00,,,,N,Y,9.00,,,N,N,N,N,Y,N
+brandy,10063,Brandy,Licores,,N,Tamano,Chupito,,,,,0.00,,,,N,Y,3.00,,,N,N,N,N,Y,N
+brandy,10062,,,,,,Copa,,,,,0.00,,,,,Y,5.00,,,N,N,N,N,,
+brewdog-(botella),25,BrewDog IPA (Botella),Cervezas,,N,,,,,,,1.19,,,,N,Y,5.00,,,N,N,N,N,Y,N
+burrata-con-tomate,50,Burrata con Tomate,Tapas,,N,,,,,,,4.50,,,,N,Y,12.00,,,N,N,N,N,Y,N
+café-con-leche-1,10025,Café con Leche,Bebidas Calientes,,N,,,,,,,0.30,,,,N,Y,2.50,,,Y,N,N,N,Y,N
+carajillo,10042,Carajillo,Bebidas Calientes,,N,,,,,,,0.90,,,,N,Y,3.00,,,Y,N,N,N,Y,N
+chicken-waffles,10027,Chicken Waffles,Platos Calientes,,N,,,,,,,0.00,,,,N,Y,14.00,,,N,N,N,Y,Y,N
+chocolate-caliente,10035,Chocolate Caliente,Bebidas Calientes,,N,,,,,,,0.40,,,,N,Y,3.00,,,Y,N,N,N,Y,N
+cóctel-sin-alcohol,10049,Cóctel sin Alcohol,Cócteles,,N,,,,,,,0.00,,,,N,Y,5.00,,,N,N,N,N,Y,N
+cookie,10037,Cookie,Dulces,,N,,,,,,,0.00,,,,N,Y,2.00,,,N,N,N,N,Y,N
+cortado,14,Cortado,Bebidas Calientes,,N,,,,,,,0.30,,,,N,Y,1.80,,,Y,N,N,N,Y,N
+"crema-de-queso,-tomates-secos",53,"Crema de Queso, Tomates Secos",Tostadas,,N,,,,,,,1.70,,,,N,Y,5.00,,,N,Y,N,N,Y,N
+croissant,10000,Croissant,Desayunos,,N,,,,,,,0.49,,,,N,Y,2.00,,,N,Y,N,N,Y,N
+espresso,10011,Espresso,Bebidas Calientes,,N,Tamano,Doble,,,,,0.40,,,,N,Y,2.00,,,Y,N,N,N,Y,N
+espresso,10010,,,,,,Single,,,,,0.20,,,,,Y,1.50,,,,,,,,
+estrella-(botella),23,Estrella (Botella),Cervezas,,N,,,,,,,0.00,,,,N,Y,3.50,,,N,N,N,N,Y,N
+font-vella-agua-con-gas-(50cl),5027,Font Vella Agua con Gaz (50cl),Bebidas Frio,,N,,,,,,,0.56,,,,Y,Y,3.00,28.000,5.000,N,N,N,N,Y,N
+font-vella-agua-sin-gas,5070,Font Vella Agua sin Gas (1litro),Bebidas Frio,,N,,,,,,,0.75,,,,Y,Y,4.00,21.000,,N,N,N,N,Y,N
+font-vella-agua-sin-gas-(33cl),5,Font Vella Agua sin Gas (33cl),Bebidas Frio,,N,,,,,,,0.36,,,,Y,Y,1.50,35.000,,N,N,N,N,Y,N
+galda-botella-,10015,Galda Cava,Vinos y Cavas,,N,Tamano,Botella,,,,,6.90,,,,N,Y,28.00,,,N,N,N,N,Y,N
+galda-botella-,10016,,,,,,Copa,,,,,1.10,,,,,Y,4.50,,,N,N,N,N,,
+gin-&-tonic,10050,Gin & Tonic,Combinados,,N,,,,,,,0.00,,,,N,Y,7.50,,,N,N,N,N,Y,N
+gofres-/-wafle-dulce,10058,Gofre / Waffle Dulce,Dulces,,N,,,,,,,0.00,,,,N,Y,4.50,,,N,N,Y,N,Y,N
+golden-latte,10002,Golden Latte,Bebidas Calientes,"<p>Cúrcuma, Jengibre, Pimienta</p>",N,,,,,,,0.50,,,,N,Y,3.00,,,Y,N,N,N,Y,N
+pork-gulasch,10055,Gulash de Cerdo,Platos Calientes,,N,,,,,,,0.00,,,,N,Y,13.00,,,N,N,N,N,Y,N
+gustave-eiffel,10028,Gustave Eiffel,Vinos y Cavas,,N,Variedad,Brut,,,,,32.00,,,,N,Y,66.00,,,N,N,N,N,Y,N
+gustave-eiffel,10029,,,,,,Rose,,,,,35.00,,,,,Y,70.00,,,N,N,N,N,,
+hierbas-botella,30088,Hierbas,Licores,,N,Tamano,Botella,,,,,11.20,,,,Y,Y,46.00,4.000,,N,N,N,N,Y,N
+hierbas-botella,3008,,,,,,Copa,,,,,0.75,,,,,Y,5.00,0.000,,N,N,N,N,,
+huevos-revueltos,45,Huevos Revueltos,Desayunos,,N,,,,,,,1.20,,,,N,Y,6.00,,,N,Y,N,N,Y,N
+hugo-spritz,10044,Hugo Spritz,Cócteles,,N,,,,,,,0.00,,,,N,Y,9.00,,,N,N,N,N,Y,N
+"hummus,-remolacha,-salsa-de-jengibre",52,"Hummus, Remolacha, Salsa de Jengibre",Tostadas,,N,,,,,,,1.40,,,,N,Y,4.50,,,N,Y,N,N,Y,N
+jamón-batallé-y-manchego,54,Jamón Batallé y Manchego,Tostadas,,N,,,,,,,3.00,,,,N,Y,9.50,,,N,Y,N,N,Y,N
+kas-naranja-(38cl),2013,Kas Naranja (38cl),Bebidas Frio,,N,,,,,,,0.58,,,,Y,Y,3.00,23.000,,N,N,N,N,Y,N
+kas-naranja,10007,Kas Naranja Lata (33cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,2.00,,,N,N,N,N,N,Y
+limonada-casera-(33cl),2,Limonada Casera (33cl),Bebidas Frio,,N,,,,,,,1.50,,,,N,Y,5.00,,,N,N,N,N,Y,N
+lipton-lemon,10022,Lipton lemon Lata (33cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,2.00,,,N,N,N,N,N,Y
+lipton-limón-(38cl),9,Lipton Limón (38cl),Bebidas Frio,,N,,,,,,,0.66,,,,Y,Y,3.00,23.000,,N,N,N,N,Y,N
+lipton-mango-maracuyá-(38cl),10,Lipton Mango Maracuyá (38cl),Bebidas Frio,,N,,,,,,,0.00,,,,Y,Y,3.00,20.000,,N,N,N,N,Y,N
+margarita,10053,Margarita,Cócteles,,N,,,,,,,0.00,,,,N,Y,9.00,,,N,N,N,N,Y,N
+martini-blanco,10054,Martini Blanco,Aperitivos,,N,Tamano,Botella,,,,,0.00,,,,N,Y,28.00,,,N,N,N,N,Y,N
+martini-blanco,10038,,,,,,Copa,,,,,0.00,,,,,Y,4.00,,,N,N,N,N,,
+matcha-latte-1,10026,Matcha Latte,Bebidas Calientes,,N,,,,,,,0.60,,,,N,Y,3.50,,,Y,N,N,N,Y,N
+mojito,10046,Mojito,Cócteles,,N,,,,,,,0.00,,,,N,Y,9.00,,,N,N,N,N,Y,N
+moritz-(botella),24,Moritz (Botella),Cervezas,,N,,,,,,,0.72,,,,N,Y,3.50,,,N,N,N,N,Y,N
+moscow-mule,10047,Moscow Mule,Cócteles,,N,,,,,,,0.00,,,,N,Y,9.00,,,N,N,N,N,Y,N
+pan-solo,10024,Pan (Clásica),Desayunos,,N,,,,,,,0.20,,,,N,Y,1.00,,,N,Y,N,N,Y,N
+pan-(masa-madre),10001,Pan (Masa Madre),Desayunos,,N,,,,,,,0.70,,,,N,Y,1.00,,,N,Y,N,N,Y,N
+pepsi-cola,2010,Pepsi Cola (38cl),Bebidas Frio,,N,,,,,,,0.58,,,,Y,Y,3.00,16.000,,N,N,N,N,Y,N
+pepsi-max-zero-(38cl),2011,Pepsi Max Zero (38cl),Bebidas Frio,,N,,,,,,,0.58,,,,Y,Y,3.00,24.000,,N,N,N,N,Y,N
+provolone,57,Provolone,Tapas,,N,,,,,,,2.60,,,,N,Y,10.00,,,N,N,N,N,Y,N
+queso-de-cabra,10056,Queso de Cabra,Tostadas,,N,,,,,,,0.00,,,,N,Y,5.50,,,N,Y,N,N,Y,N
+ron,10057,Ron,Licores,,N,Tamano,Chupito,,,,,0.00,,,,N,Y,3.00,,,N,N,N,N,Y,N
+ron,10043,,,,,,Copa,,,,,0.00,,,,,Y,5.00,,,N,N,N,N,,
+rum-&-pepsi,10051,Rum & Pepsi,Combinados,,N,,,,,,,0.00,,,,N,Y,7.50,,,N,N,N,N,Y,N
+san-miguel-lata-33-cl.,10033,San Miguel Lata (33cl),Bebidas Para Llevar,,N,,,,,,,0.00,,,,N,Y,2.50,,,N,N,N,N,N,Y
+sardinas,56,Sardinas,Tapas,,N,,,,,,,1.90,,,,N,Y,7.00,,,N,N,N,N,Y,N
+shandy,10052,Shandy,Cervezas,,N,,,,,,,0.00,,,,N,Y,3.00,,,N,N,N,N,Y,N
+calabaza-con-cilantro,49,Sopa de Calabaza,Platos Calientes,,N,,,,,,,2.00,,,,N,Y,7.00,,,N,N,N,N,Y,N
+"té-(negro,-verde,-detox)",10014,Té,Bebidas Calientes,,N,Variedad,Detox,,,,,0.20,,,,N,Y,3.00,,,N,N,N,N,Y,N
+"té-(negro,-verde,-detox)",10012,,,,,,Negro,,,,,0.20,,,,,Y,3.00,,,N,N,N,N,,
+"té-(negro,-verde,-detox)",10013,,,,,,Verde,,,,,0.20,,,,,Y,3.00,,,N,N,N,N,,
+tinto:-finca-olivardots-botella,10017,Tinto: Finca Olivardots,Vinos y Cavas,,N,Tamano,Botella,,,,,10.50,,,,N,Y,37.00,,,N,N,N,N,Y,N
+tinto:-finca-olivardots-botella,10018,,,,,,Copa,,,,,2.10,,,,,Y,7.50,,,N,N,N,N,,
+tinto:-gazur-botella,10019,Tinto: Gazur,Vinos y Cavas,,N,Tamano,Botella,,,,,8.80,,,,N,Y,32.00,,,N,N,N,N,Y,N
+tinto:-gazur-botella,10020,,,,,,Copa,,,,,1.76,,,,,Y,6.50,,,N,N,N,N,,
+tip,tip,Tip,Tips,,N,,,,,,,0.00,,,,N,Y,variable,,,N,N,N,N,N,N
+tortilla,10060,Tortilla,Tapas,,N,,,,,,,0.00,,,,N,Y,4.00,,,N,N,N,N,Y,N
+vermut-raimat-el-polvorí-ecológico,10021,Vermut Raimat El Polvorí Ecológico,Aperitivos,,N,Tamano,Botella,,,,,8.03,,,,Y,Y,35.00,0.000,,N,N,N,N,Y,N
+vermut-raimat-el-polvorí-ecológico,9673,,,,,,Copa,,,,,0.43,,,,,Y,5.00,-1.000,,N,N,N,N,,
+vodka,10067,Vodka,Licores,,N,Tamano,Chupito,,,,,0.00,,,,N,Y,3.00,,,N,N,N,N,Y,N
+vodka,10066,,,,,,Copa,,,,,0.00,,,,,Y,5.00,,,N,N,N,N,,
+vodka-&-lemon,10030,Vodka & Lemon,Combinados,,N,,,,,,,0.00,,,,N,Y,7.50,,,N,N,N,N,Y,N
+zumo,10041,Zumo,Bebidas Frio,,N,Variedad,Manzana,,,,,0.00,,,,N,Y,2.50,,,N,N,N,N,Y,N
+zumo,10039,,,,,,Melocoton,,,,,0.00,,,,,Y,2.50,,,N,N,N,N,,
+zumo,10040,,,,,,Pina,,,,,0.00,,,,,Y,2.50,,,N,N,N,N,,
+jugo-de-naranja-fresco,10036,Zumo de Naranja Fresco,Bebidas Frio,,N,,,,,,,0.00,,,,N,Y,4.50,,,N,N,N,N,Y,N
