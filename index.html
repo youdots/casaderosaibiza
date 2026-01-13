@@ -228,13 +228,15 @@
           "actions actions"
           "updated updated"
           "viewer viewer";
+        column-gap: 24px;
       }
 
       .brand { padding: 18px 0 10px var(--pad); }
       .brand img {
-        width: clamp(120px, 34vw, 200px);
+        width: 33.333vw;
+        min-width: 120px;
         height: auto;
-        max-width: 100%;
+        max-width: min(200px, 100%);
       }
 
       .langs {
