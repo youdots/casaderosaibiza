@@ -4,40 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Casa de Rosa | Carrer de Font i Quer, 15, 07800 Eivissa | Ibiza, Illes Balears</title>
-  <meta name="description" content="Casa de Rosa — Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls — Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
+  <meta name="description" content="Casa de Rosa &mdash; Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls &mdash; Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
   <meta name="theme-color" content="#E2D9D5">
+  <link rel="canonical" href="https://casaderosaibiza.com/">
+
   <link rel="icon" href="Logo-Signet-CdR-Red-Light.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://casaderosaibiza.com/">
   <meta property="og:title" content="Casa de Rosa | Carrer de Font i Quer, 15, 07800 Eivissa | Ibiza, Illes Balears">
-  <meta property="og:description" content="Casa de Rosa — Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls — Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
-  <meta property="og:image" content="social/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image" content="social/og-image-square.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="1200">
-  <meta property="og:image:alt" content="Casa de Rosa — Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls — Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
+  <meta property="og:description" content="Casa de Rosa &mdash; Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls &mdash; Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
+  <meta property="og:image" content="https://casaderosaibiza.com/Logo-CdR-Red-Light.png">
+  <meta property="og:image:secure_url" content="https://casaderosaibiza.com/Logo-CdR-Red-Light.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="4400">
+  <meta property="og:image:height" content="1646">
+  <meta property="og:image:alt" content="Casa de Rosa">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Casa de Rosa | Carrer de Font i Quer, 15, 07800 Eivissa | Ibiza, Illes Balears">
-  <meta name="twitter:description" content="Casa de Rosa — Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls — Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
-  <meta name="twitter:image" content="social/og-image.png">
-  <meta name="twitter:image:alt" content="Casa de Rosa — Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls — Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
+  <meta name="twitter:description" content="Casa de Rosa &mdash; Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls &mdash; Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears.">
+  <meta name="twitter:image" content="https://casaderosaibiza.com/Logo-CdR-Red-Light.png">
+  <meta name="twitter:image:alt" content="Casa de Rosa">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500;600&amp;display=swap" rel="stylesheet">
+
   <style>
     :root {
       --canvas: #e2d9d5;
       --accent: #a0471a;
       --pad: 22px;
-      --viewer-gap: 16px;
+      --gap: 12px;
+      --radius: 12px;
     }
+
     * { box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; }
+    html, body { height: 100%; }
+
     body {
       margin: 0;
       height: 100dvh;
@@ -46,286 +55,257 @@
       font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
       overflow: hidden;
     }
+
+    a { color: inherit; }
+    [hidden] { display: none !important; }
+
     @media (min-width: 721px) {
-      body {
-        padding-top: 16px;
-        height: calc(100dvh - 16px);
-      }
+      body { padding-top: 16px; height: calc(100dvh - 16px); }
     }
+
     .frame {
       width: min(1200px, 100%);
       height: 100%;
       margin: 0 auto;
       background: var(--canvas);
-      border-radius: 12px;
       overflow: hidden;
-      display: grid;
-      grid-template-rows: auto auto 1fr;
       min-height: 0;
-    }
-    header {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 16px;
-      align-items: center;
-      padding: 22px var(--pad) 18px;
+      grid-template-columns: 1fr auto auto;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        "brand langs actions"
+        "copy copy copy"
+        "viewer viewer viewer";
+      column-gap: var(--gap);
     }
+
+    @media (min-width: 721px) {
+      .frame { border-radius: var(--radius); }
+    }
+
     .brand {
+      grid-area: brand;
+      padding: 22px 0 14px var(--pad);
       display: flex;
       align-items: center;
-      gap: 14px;
       min-width: 0;
     }
+
     .brand img {
-      height: 96px;
+      height: 80px;
       width: auto;
       max-width: 100%;
-    }
-    .title {
-      margin: 0 0 8px;
-      font-size: 20px;
-      line-height: 1.4;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .tagline {
-      margin: 4px 0;
-      font-size: 17px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .addressline { margin-top: 10px; }
-    .tagline.hours {
-      margin-top: 34px;
-      margin-bottom: 44px;
-      font-size: 21px;
-    }
-    .tagline.updated {
-      font-size: 20px;
-      line-height: 1.6;
-      letter-spacing: 0;
-      text-transform: none;
-      font-weight: 400;
-      margin-top: 8px;
       display: block;
-      opacity: 0.8;
     }
-    .tagline.updated-mobile {
-      display: none;
-      margin-top: 0;
+
+    .langs {
+      grid-area: langs;
+      padding: 22px 0 14px 0;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: var(--gap);
+      white-space: nowrap;
+      font-size: 18px;
+      line-height: 1.4;
     }
-    .inline-link {
+
+    .actions {
+      grid-area: actions;
+      padding: 22px var(--pad) 14px 0;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: var(--gap);
+      white-space: nowrap;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .sep { user-select: none; }
+
+    .link {
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      background: transparent;
+      padding: 0;
+      font: inherit;
       color: inherit;
+      cursor: pointer;
+      display: inline;
+      vertical-align: baseline;
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
+      line-height: inherit;
     }
-    .controls {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      font-size: 20px;
-      line-height: 1.6;
-      letter-spacing: 0;
-      text-transform: none;
-      font-weight: 400;
-    }
-    .actions {
-      display: inline-flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .lang {
-      border: none;
-      background: transparent;
-      color: var(--accent);
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      text-decoration: none;
-      opacity: 0.8;
-      line-height: 1.6;
-    }
-    .lang.active {
-      text-decoration: underline;
-      text-underline-offset: 4px;
+
+    .link:disabled {
       opacity: 1;
+      cursor: default;
+      text-decoration: none;
+      -webkit-text-fill-color: currentColor;
     }
-    .sep {
-      opacity: 0.8;
-      user-select: none;
+
+    .copy {
+      grid-area: copy;
+      padding: 0 var(--pad) 8px;
+      font-size: 18px;
+      line-height: 1.5;
     }
-    .action {
-      border: none;
-      background: transparent;
-      color: var(--accent);
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      opacity: 0.8;
-    }
-    .action:hover { opacity: 1; }
-    .summary {
-      padding: 0 var(--pad) 10px;
-      font-size: 14px;
-      display: block;
-      color: var(--accent);
-    }
-    .summary-top {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      column-gap: 18px;
+
+    .copy p { margin: 0 0 10px; }
+    .copy p:last-child { margin-bottom: 0; }
+
+    .copy-header {
+      display: flex;
+      justify-content: space-between;
       align-items: baseline;
+      gap: 16px;
+      margin-bottom: 10px;
     }
-    .summary-top .title {
-      margin: 0;
+
+    .headline { font-weight: 600; }
+
+    .updated {
+      white-space: nowrap;
+      text-align: right;
     }
-    .summary-top .tagline.updated {
-      margin: 0;
-    }
+
     .viewer {
-      padding: 0 0 var(--viewer-gap);
+      grid-area: viewer;
       min-height: 0;
+      height: 100%;
       overflow: hidden;
-      height: 100%;
     }
-    .panel {
-      display: none;
+
+    .pdf {
+      width: 100%;
       height: 100%;
-    }
-    .panel.active {
+      border: none;
+      background: var(--canvas);
       display: block;
     }
-    .pdf-frame {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 0;
-      overflow: hidden;
-      background: var(--canvas);
-    }
-    .viewer .pdf-frame {
-      height: calc(100% - var(--viewer-gap));
-    }
-    .pdf-frame object {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: var(--canvas);
-    }
+
     .fallback {
       padding: 18px 14px;
       font-size: 14px;
-      color: var(--accent);
+      line-height: 1.4;
     }
+
     @media (max-width: 720px) {
       :root { --pad: 18px; }
-      header {
-        grid-template-columns: minmax(0, 1fr) auto;
-        justify-items: stretch;
+
+      .frame {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto auto 1fr;
+        grid-template-areas:
+          "brand langs"
+          "copy copy"
+          "actions actions"
+          "viewer viewer";
       }
-      .brand img {
-        height: auto;
-        max-height: 72px;
-        max-width: 58vw;
+
+      .brand { padding: 18px 0 10px var(--pad); }
+      .brand img { height: 56px; }
+
+      .langs { padding: 18px var(--pad) 10px 0; }
+
+      .actions {
+        padding: 0 var(--pad) 6px;
+        justify-self: start;
       }
-      .controls {
-        width: auto;
-        justify-content: flex-end;
-        flex-wrap: nowrap;
-        white-space: nowrap;
+
+      .copy { padding: 0 var(--pad) 6px; }
+
+      .copy-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
       }
-      .lang { flex-shrink: 0; }
-      .actions { display: none; }
-      .summary-top { grid-template-columns: 1fr; row-gap: 6px; }
-      .summary-top .tagline.updated { display: none; }
-      .tagline.updated-mobile { display: block; margin-bottom: 24px; }
-      :root { --viewer-gap: 0px; }
-    }
-    @media (max-height: 760px) {
-      header { padding-bottom: 12px; }
-      .tagline.hours { margin-top: 18px; margin-bottom: 28px; }
+
+      .updated { text-align: left; }
     }
   </style>
 </head>
 <body>
   <div class="frame">
-    <header>
-      <div class="brand">
-        <img src="Logo-CdR-Red-Light.svg" alt="Casa de Rosa logotype">
-      </div>
-      <div class="controls">
-        <button class="lang" aria-pressed="false" data-lang="es">ES</button>
-        <span class="sep" aria-hidden="true">|</span>
-        <button class="lang active" aria-pressed="true" data-lang="en">EN</button>
-        <span class="sep actions" aria-hidden="true">|</span>
-        <span class="actions">
-          <button class="action" type="button" data-action="fullscreen">Fullscreen</button>
-          <a class="action" data-action="download" href="CdR-Menu-2026-01-12-EN.pdf" download>Download</a>
-          <button class="action" type="button" data-action="share" style="display:none">Share</button>
-        </span>
-      </div>
-    </header>
-
-    <div class="summary" data-lang-copy="en">
-      <div class="summary-top">
-        <p class="title">Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls</p>
-        <div class="tagline updated">Updated 12 Jan 2026</div>
-      </div>
-      <p class="title addressline">
-        <a class="inline-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noreferrer">Carrer De Font I Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
-      </p>
-      <p class="tagline hours">Mon-Fri 9:00-18:00 | Sat-Sun Closed</p>
-      <div class="tagline updated updated-mobile">Updated 12 Jan 2026</div>
-    </div>
-    <div class="summary" data-lang-copy="es" style="display:none">
-      <div class="summary-top">
-        <p class="title">Desayunos y comida saludable | Café de especialidad | Vinilos</p>
-        <div class="tagline updated">Menú actualizado 12 Ene 2026</div>
-      </div>
-      <p class="title addressline">
-        <a class="inline-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noreferrer">Carrer De Font I Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
-      </p>
-      <p class="tagline hours">Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</p>
-      <div class="tagline updated updated-mobile">Menú actualizado 12 Ene 2026</div>
+    <div class="brand">
+      <img src="Logo-CdR-Red-Light.svg" alt="Casa de Rosa">
     </div>
 
-    <section class="viewer">
-      <div class="panel active" id="panel-en">
-        <div class="pdf-frame">
-          <object data="CdR-Menu-2026-01-12-EN.pdf#view=FitH&zoom=page-width" type="application/pdf" aria-label="Casa de Rosa menu (English)">
-            <div class="fallback">
-              The menu PDF may not load in this browser. <a href="CdR-Menu-2026-01-12-EN.pdf">Open the English menu</a>.
-            </div>
-          </object>
-        </div>
+    <nav class="langs" aria-label="Language">
+      <button class="link" type="button" data-lang="es">ES</button>
+      <span class="sep" aria-hidden="true">|</span>
+      <button class="link" type="button" data-lang="en" disabled aria-current="true">EN</button>
+    </nav>
+
+    <nav class="actions" aria-label="Menu actions">
+      <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noreferrer">Menu</a>
+      <span class="sep share-sep" aria-hidden="true" style="display:none">|</span>
+      <button class="link" type="button" data-action="share" style="display:none">Share</button>
+    </nav>
+
+    <div class="copy" data-lang-copy="en">
+      <div class="copy-header">
+        <div class="headline">Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls</div>
+        <div class="updated">Updated 12 Jan 2026</div>
       </div>
-      <div class="panel" id="panel-es">
-        <div class="pdf-frame">
-          <object data="CdR-Menu-2026-01-12-ES.pdf#view=FitH&zoom=page-width" type="application/pdf" aria-label="Casa de Rosa menú (Español)">
-            <div class="fallback">
-              Es posible que el PDF no cargue en este navegador. <a href="CdR-Menu-2026-01-12-ES.pdf">Abrir el menú en español</a>.
-            </div>
-          </object>
-        </div>
+      <p>
+        <a class="link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noreferrer">Carrer De Font I Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+      </p>
+      <p>Mon-Fri 9:00-18:00 | Sat-Sun Closed</p>
+    </div>
+
+    <div class="copy" data-lang-copy="es" hidden>
+      <div class="copy-header">
+        <div class="headline">Desayunos y comida saludable | Café de especialidad | Vinilos</div>
+        <div class="updated">Menú actualizado 12 Ene 2026</div>
       </div>
+      <p>
+        <a class="link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noreferrer">Carrer De Font I Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+      </p>
+      <p>Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</p>
+    </div>
+
+    <section class="viewer" aria-label="Menu PDF">
+      <object class="pdf" data-lang-panel="en" data="CdR-Menu-2026-01-12-EN.pdf" type="application/pdf" aria-label="Menu PDF (English)">
+        <div class="fallback">
+          The menu PDF may not load in this browser. <a class="link" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noreferrer">Open the English menu</a>.
+        </div>
+      </object>
+      <object class="pdf" data-lang-panel="es" data="CdR-Menu-2026-01-12-ES.pdf" type="application/pdf" aria-label="Menu PDF (Español)" hidden>
+        <div class="fallback">
+          Es posible que el PDF no cargue en este navegador. <a class="link" href="CdR-Menu-2026-01-12-ES.pdf" target="_blank" rel="noreferrer">Abrir el menú en español</a>.
+        </div>
+      </object>
     </section>
-
   </div>
 
   <script>
-    const buttons = Array.from(document.querySelectorAll('.lang'));
-    const panels = {
-      en: document.getElementById('panel-en'),
-      es: document.getElementById('panel-es'),
+    const languageButtons = Array.from(document.querySelectorAll('[data-lang]'));
+    const copyBlocks = Array.from(document.querySelectorAll('[data-lang-copy]'));
+    const pdfPanels = Array.from(document.querySelectorAll('[data-lang-panel]'));
+    const menuLink = document.querySelector('[data-action="menu"]');
+    const shareButton = document.querySelector('[data-action="share"]');
+    const shareSeparator = document.querySelector('.share-sep');
+
+    const ui = {
+      en: {
+        menu: 'Menu',
+        share: 'Share',
+        shareTitle: 'Casa de Rosa | Healthy Breakfast & Lunch | Specialty Coffee | Vinyls',
+        pdf: 'CdR-Menu-2026-01-12-EN.pdf',
+      },
+      es: {
+        menu: 'Menú',
+        share: 'Compartir',
+        shareTitle: 'Casa de Rosa | Desayunos y comida saludable | Café de especialidad | Vinilos',
+        pdf: 'CdR-Menu-2026-01-12-ES.pdf',
+      },
     };
-    const summaries = Array.from(document.querySelectorAll('[data-lang-copy]'));
 
     function isSpanishLocale(locale) {
       const value = String(locale || '').toLowerCase();
@@ -336,100 +316,66 @@
       const locales = Array.isArray(navigator.languages) && navigator.languages.length
         ? navigator.languages
         : [navigator.language];
-
-      const primary = locales[0];
-      return isSpanishLocale(primary) ? 'es' : 'en';
+      return isSpanishLocale(locales[0]) ? 'es' : 'en';
     }
-
-    const actionLabels = {
-      en: {
-        fullscreen: 'Fullscreen',
-        download: 'Download',
-        share: 'Share',
-        shareTitle: 'Casa de Rosa | Healthy Breakfast & Lunch | Specialty Coffee | Vinyls',
-      },
-      es: {
-        fullscreen: 'Pantalla completa',
-        download: 'Descargar',
-        share: 'Compartir',
-        shareTitle: 'Casa de Rosa | Desayunos y comida saludable | Café de especialidad | Vinilos',
-      },
-    };
 
     function setLanguage(lang) {
-      const normalized = lang === 'es' ? 'es' : 'en';
-      const downloadLink = document.querySelector('[data-action="download"]');
-      const shareBtn = document.querySelector('[data-action="share"]');
-      const fullscreenBtn = document.querySelector('[data-action="fullscreen"]');
-      const pdfSrc = normalized === 'es' ? 'CdR-Menu-2026-01-12-ES.pdf' : 'CdR-Menu-2026-01-12-EN.pdf';
-      const labels = actionLabels[normalized];
+      const current = lang === 'es' ? 'es' : 'en';
+      const labels = ui[current];
 
-      buttons.forEach(b => {
-        const isActive = b.getAttribute('data-lang') === normalized;
-        b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        b.classList.toggle('active', isActive);
-      });
-
-      Object.entries(panels).forEach(([key, panel]) => {
-        panel.classList.toggle('active', key === normalized);
-      });
-
-      summaries.forEach(block => {
-        const match = block.getAttribute('data-lang-copy') === normalized;
-        block.style.display = match ? 'block' : 'none';
-      });
-
-      if (downloadLink) downloadLink.setAttribute('href', pdfSrc);
-      if (downloadLink && labels) downloadLink.textContent = labels.download;
-      if (fullscreenBtn && labels) fullscreenBtn.textContent = labels.fullscreen;
-      if (shareBtn && labels) shareBtn.textContent = labels.share;
-      if (shareBtn) {
-        shareBtn.style.display = navigator.share ? '' : 'none';
-        shareBtn.dataset.pdf = pdfSrc;
+      for (const button of languageButtons) {
+        const isActive = button.getAttribute('data-lang') === current;
+        button.toggleAttribute('disabled', isActive);
+        button.setAttribute('aria-current', isActive ? 'true' : 'false');
       }
-      if (fullscreenBtn) fullscreenBtn.dataset.pdf = pdfSrc;
 
-      document.documentElement.lang = normalized;
-      document.documentElement.dataset.shareTitle = labels ? labels.shareTitle : 'Casa de Rosa Menu';
+      for (const block of copyBlocks) {
+        block.toggleAttribute('hidden', block.getAttribute('data-lang-copy') !== current);
+      }
+
+      for (const panel of pdfPanels) {
+        panel.toggleAttribute('hidden', panel.getAttribute('data-lang-panel') !== current);
+      }
+
+      if (menuLink) {
+        menuLink.textContent = labels.menu;
+        menuLink.setAttribute('href', labels.pdf);
+      }
+
+      const canShare = Boolean(navigator.share);
+      if (shareButton) {
+        shareButton.textContent = labels.share;
+        shareButton.style.display = canShare ? '' : 'none';
+        shareButton.dataset.shareTitle = labels.shareTitle;
+      }
+      if (shareSeparator) {
+        shareSeparator.style.display = canShare ? '' : 'none';
+      }
+
+      document.documentElement.lang = current;
     }
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', (event) => {
+    for (const button of languageButtons) {
+      button.addEventListener('click', (event) => {
         event.preventDefault();
-        setLanguage(btn.getAttribute('data-lang'));
+        setLanguage(button.getAttribute('data-lang'));
       });
-    });
+    }
 
-    setLanguage(getDefaultLanguage());
-
-    document.addEventListener('click', async (event) => {
-      const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
-      const action = target.getAttribute('data-action');
-      if (!action) return;
-
-      if (action === 'fullscreen') {
-        event.preventDefault();
-        const frame = document.querySelector('.panel.active .pdf-frame');
-        if (!frame) return;
-        if (document.fullscreenElement) {
-          await document.exitFullscreen();
-        } else if (frame.requestFullscreen) {
-          await frame.requestFullscreen();
-        }
-      }
-
-      if (action === 'share') {
+    if (shareButton) {
+      shareButton.addEventListener('click', async (event) => {
         event.preventDefault();
         if (!navigator.share) return;
         try {
-          const title = document.documentElement.dataset.shareTitle || 'Casa de Rosa Menu';
-          await navigator.share({ title, url: 'https://casaderosaibiza.com' });
+          const title = shareButton.dataset.shareTitle || 'Casa de Rosa';
+          await navigator.share({ title, url: 'https://casaderosaibiza.com/' });
         } catch {
           // ignore cancel
         }
-      }
-    });
+      });
+    }
+
+    setLanguage(getDefaultLanguage());
   </script>
 </body>
 </html>
