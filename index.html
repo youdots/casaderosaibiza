@@ -64,7 +64,7 @@
     a { color: inherit; }
     [hidden] { display: none !important; }
 
-    @media (min-width: 721px) {
+    @media (min-width: 901px) {
       body { padding-top: 16px; height: calc(100dvh - 16px); }
     }
 
@@ -85,7 +85,7 @@
       column-gap: var(--gap);
     }
 
-    @media (min-width: 721px) {
+    @media (min-width: 901px) {
       .frame { border-radius: var(--radius); }
     }
 
@@ -159,7 +159,7 @@
 
     .copy {
       grid-area: copy;
-      padding: 0 var(--pad) var(--para-gap);
+      padding: 0 var(--pad) calc(var(--para-gap) * 2);
     }
 
     .copy p { margin: 0 0 var(--para-gap); }
@@ -216,7 +216,7 @@
       line-height: inherit;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
       :root { --pad: 18px; }
 
       .frame {
