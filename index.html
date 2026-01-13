@@ -123,6 +123,15 @@
       line-height: 1.4;
     }
 
+    .updated-row {
+      display: none;
+      grid-area: updated;
+      padding: 0 var(--pad) 12px;
+      font-size: 18px;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
     .sep { user-select: none; }
 
     .link {
@@ -198,11 +207,12 @@
 
       .frame {
         grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto auto 1fr;
+        grid-template-rows: auto auto auto auto 1fr;
         grid-template-areas:
           "brand langs"
           "copy copy"
           "actions actions"
+          "updated updated"
           "viewer viewer";
       }
 
@@ -215,6 +225,9 @@
         padding: 0 var(--pad) 12px;
         justify-self: start;
       }
+
+      .updated-row { display: block; }
+      .copy-header .updated { display: none; }
 
       .copy { padding: 0 var(--pad) 6px; }
 
@@ -245,6 +258,11 @@
       <span class="sep share-sep" aria-hidden="true" style="display:none">|</span>
       <button class="link" type="button" data-action="share" style="display:none">Share</button>
     </nav>
+
+    <div class="updated-row" aria-label="Last updated">
+      <div data-lang-updated="en">Updated 12 Jan 2026</div>
+      <div data-lang-updated="es" hidden>Menú actualizado 12 Ene 2026</div>
+    </div>
 
     <div class="copy" data-lang-copy="en">
       <div class="copy-header">
@@ -285,6 +303,7 @@
   <script>
     const languageButtons = Array.from(document.querySelectorAll('[data-lang]'));
     const copyBlocks = Array.from(document.querySelectorAll('[data-lang-copy]'));
+    const updatedBlocks = Array.from(document.querySelectorAll('[data-lang-updated]'));
     const pdfPanels = Array.from(document.querySelectorAll('[data-lang-panel]'));
     const menuLink = document.querySelector('[data-action="menu"]');
     const shareButton = document.querySelector('[data-action="share"]');
@@ -329,6 +348,10 @@
 
       for (const block of copyBlocks) {
         block.toggleAttribute('hidden', block.getAttribute('data-lang-copy') !== current);
+      }
+
+      for (const block of updatedBlocks) {
+        block.toggleAttribute('hidden', block.getAttribute('data-lang-updated') !== current);
       }
 
       for (const panel of pdfPanels) {
