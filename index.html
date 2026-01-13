@@ -111,12 +111,9 @@
       justify-self: end;
       text-align: right;
       align-self: center;
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: flex-end;
-      gap: 0.75ch;
       white-space: nowrap;
     }
+    .langs .link + .link { margin-left: 0.85ch; }
     .actions {
       grid-area: actions;
       padding: 0 var(--pad) var(--para-gap);
@@ -258,14 +255,9 @@
         position: relative;
         z-index: 2;
         align-self: center;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        align-items: center;
-        align-content: center;
-        gap: 0.65ch 0.85ch;
+        line-height: var(--line-height);
       }
-      .mobile-break { display: block; height: 0; width: 100%; }
+      .mobile-break { display: block; height: 0; }
       .langs .sep { display: none; }
 
       .viewer {
