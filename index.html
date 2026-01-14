@@ -589,8 +589,10 @@
     </div>
 
 	    <section class="viewer" aria-label="Menu PDF">
+	      <div class="fallback" data-android-viewer hidden>
+	        <a class="link" data-android-menu-link href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Open the menu (PDF)</a>.
+	      </div>
 	      <object class="pdf" data-lang-panel="en" data="CdR-Menu-2026-01-12-EN.pdf" type="application/pdf" aria-label="Menu PDF (English)">
-	        <iframe class="pdf" data-pdf-frame data-pdf-lang="en" src="about:blank" title="Menu PDF (English)" loading="lazy" referrerpolicy="no-referrer"></iframe>
 	        <div class="fallback">
 	          <div data-lang-fallback="en">The menu PDF may not load in this browser. <a class="link" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noreferrer" tabindex="0">Open the menu (PDF)</a>.</div>
 	          <div data-lang-fallback="es" hidden>Es posible que el PDF del menú no cargue en este navegador. <a class="link" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noreferrer" tabindex="0">Abrir el menú (PDF)</a>.</div>
@@ -606,7 +608,6 @@
 	        </div>
 	      </object>
 	      <object class="pdf" data-lang-panel="es" data="CdR-Menu-2026-01-12-ES.pdf" type="application/pdf" aria-label="Menu PDF (Español)" hidden>
-	        <iframe class="pdf" data-pdf-frame data-pdf-lang="es" src="about:blank" title="Menu PDF (Español)" loading="lazy" referrerpolicy="no-referrer"></iframe>
 	        <div class="fallback">
 	          <div data-lang-fallback="en">The menu PDF may not load in this browser. <a class="link" href="CdR-Menu-2026-01-12-ES.pdf" target="_blank" rel="noreferrer" tabindex="0">Open the menu (PDF)</a>.</div>
 	          <div data-lang-fallback="es" hidden>Es posible que el PDF del menú no cargue en este navegador. <a class="link" href="CdR-Menu-2026-01-12-ES.pdf" target="_blank" rel="noreferrer" tabindex="0">Abrir el menú (PDF)</a>.</div>
@@ -626,11 +627,12 @@
 
   <script>
     const languageButtons = Array.from(document.querySelectorAll('[data-lang]'));
-    const copyBlocks = Array.from(document.querySelectorAll('[data-lang-copy]'));
-    const updatedBlocks = Array.from(document.querySelectorAll('[data-lang-updated]'));
+	    const copyBlocks = Array.from(document.querySelectorAll('[data-lang-copy]'));
+	    const updatedBlocks = Array.from(document.querySelectorAll('[data-lang-updated]'));
 	    const fallbackBlocks = Array.from(document.querySelectorAll('[data-lang-fallback]'));
 	    const pdfPanels = Array.from(document.querySelectorAll('[data-lang-panel]'));
-	    const pdfFrames = Array.from(document.querySelectorAll('[data-pdf-frame]'));
+	    const androidViewer = document.querySelector('[data-android-viewer]');
+	    const androidMenuLink = document.querySelector('[data-android-menu-link]');
 	    const menuLinks = Array.from(document.querySelectorAll('[data-action="menu"]'));
 	    const impressionsLinks = Array.from(document.querySelectorAll('[data-action="impressions"]'));
 	    const shareButtons = Array.from(document.querySelectorAll('[data-action="share"]'));
@@ -808,7 +810,7 @@
 	      updateSharing({ labels });
 
 	      document.documentElement.lang = labels.langTag || current;
-	      updatePdfViewer({ pdfLang, labels });
+	      updateAndroidPdfUi({ labels });
 	    }
 
     for (const link of focusableLinks) {
@@ -843,36 +845,16 @@
 	      return true;
 	    }
 
-	    const pdfFramesByLang = new Map(
-	      pdfFrames.map((frame) => [frame.getAttribute('data-pdf-lang'), frame])
-	    );
-
-	    function updatePdfViewer({ pdfLang, labels }) {
-	      if (!isLikelyAndroidChrome()) return;
-
-	      const frame = pdfFramesByLang.get(pdfLang);
-	      if (!frame) return;
-
-	      const desiredPdfUrl = new URL(labels.pdf, window.location.href).toString();
-	      const desiredViewerUrl = `https://docs.google.com/gview?embedded=1&url=${encodeURIComponent(desiredPdfUrl)}`;
-	      if (frame.dataset.viewerUrl === desiredViewerUrl) return;
-
-	      frame.dataset.viewerUrl = desiredViewerUrl;
-
-	      const fallback = frame.closest('[data-lang-panel]')?.querySelector('.fallback');
-	      let loaded = false;
-
-	      const onLoad = () => {
-	        loaded = true;
-	        if (fallback) fallback.setAttribute('hidden', '');
-	      };
-
-	      frame.addEventListener('load', onLoad, { once: true });
-	      frame.src = desiredViewerUrl;
-
-	      window.setTimeout(() => {
-	        if (!loaded && fallback) fallback.removeAttribute('hidden');
-	      }, 2500);
+	    function updateAndroidPdfUi({ labels }) {
+	      const isAndroid = isLikelyAndroidChrome();
+	      if (androidViewer) androidViewer.toggleAttribute('hidden', !isAndroid);
+	      if (isAndroid) {
+	        for (const panel of pdfPanels) panel.setAttribute('hidden', '');
+	      }
+	      if (isAndroid && androidMenuLink) {
+	        androidMenuLink.setAttribute('href', labels.pdf);
+	        androidMenuLink.textContent = `${labels.menu} (PDF)`;
+	      }
 	    }
 
 	    setLanguage(getDefaultLanguage());
