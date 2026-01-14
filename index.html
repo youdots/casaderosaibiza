@@ -308,7 +308,7 @@
       :root { --pad: 18px; }
 
       .frame {
-        grid-template-columns: 42% 58%;
+        grid-template-columns: auto 1fr;
         grid-template-rows: auto auto auto auto 1fr;
         grid-template-areas:
           "brand langs"
@@ -322,9 +322,9 @@
       .brand { padding: 18px 12px 10px var(--pad); }
       .brand img {
         height: auto;
-        width: 100%;
         max-width: 100%;
         max-height: 80px;
+        width: auto;
       }
 
       .langs {
