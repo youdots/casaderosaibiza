@@ -281,18 +281,18 @@
 	      display: block;
 	    }
 
-	    .android-pdfjs {
+	    .chrome-pdfjs {
 	      height: 100%;
 	      overflow: auto;
 	      -webkit-overflow-scrolling: touch;
 	      background: var(--canvas);
 	    }
 
-	    .android-pdfjs-inner {
+	    .chrome-pdfjs-inner {
 	      padding: 18px 14px;
 	    }
 
-	    .android-pdfjs-pages {
+	    .chrome-pdfjs-pages {
 	      display: flex;
 	      flex-direction: column;
 	      gap: 14px;
@@ -300,18 +300,12 @@
 	      align-items: center;
 	    }
 
-	    .android-pdfjs-pages canvas {
+	    .chrome-pdfjs-pages canvas {
 	      width: 100%;
 	      height: auto;
 	      max-width: 860px;
 	      display: block;
 	      background: white;
-	    }
-
-	    .android-pdfjs-status {
-	      padding: 10px 14px;
-	      font-size: 14px;
-	      opacity: 0.9;
 	    }
 
 	    .fallback {
@@ -622,13 +616,9 @@
 	    </div>
 
 	    <section class="viewer" aria-label="Menu PDF">
-	      <div class="android-pdfjs" data-android-viewer hidden>
-	        <div class="android-pdfjs-inner">
-	          <div class="android-pdfjs-status" data-android-pdfjs-status hidden>Loading…</div>
-	          <div class="android-pdfjs-pages" data-android-pdfjs-pages></div>
-	          <div class="fallback">
-	            <a class="link" data-android-menu-link href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Open the menu (PDF)</a>.
-	          </div>
+	      <div class="chrome-pdfjs" data-chrome-viewer hidden>
+	        <div class="chrome-pdfjs-inner">
+	          <div class="chrome-pdfjs-pages" data-chrome-pdfjs-pages></div>
 	        </div>
 	      </div>
 	      <object class="pdf" data-lang-panel="en" data="CdR-Menu-2026-01-12-EN.pdf" type="application/pdf" aria-label="Menu PDF (English)">
@@ -670,8 +660,7 @@
 	    const updatedBlocks = Array.from(document.querySelectorAll('[data-lang-updated]'));
 	    const fallbackBlocks = Array.from(document.querySelectorAll('[data-lang-fallback]'));
 	    const pdfPanels = Array.from(document.querySelectorAll('[data-lang-panel]'));
-	    const androidViewer = document.querySelector('[data-android-viewer]');
-	    const androidMenuLink = document.querySelector('[data-android-menu-link]');
+	    const chromeViewer = document.querySelector('[data-chrome-viewer]');
 	    const menuLinks = Array.from(document.querySelectorAll('[data-action="menu"]'));
 	    const impressionsLinks = Array.from(document.querySelectorAll('[data-action="impressions"]'));
 	    const shareButtons = Array.from(document.querySelectorAll('[data-action="share"]'));
@@ -849,7 +838,8 @@
 	      updateSharing({ labels });
 
 	      document.documentElement.lang = labels.langTag || current;
-	      updateAndroidPdfUi({ labels });
+	      window.__cdrCurrentPdf = labels.pdf;
+	      updateChromePdfUi();
 	      document.dispatchEvent(new CustomEvent('cdr:language', { detail: { pdf: labels.pdf, menu: labels.menu, pdfLang } }));
 	    }
 
@@ -877,41 +867,33 @@
       });
 	    }
 
-	    function isLikelyAndroidChrome() {
+	    function isLikelyChrome() {
 	      const ua = String(navigator.userAgent || '');
-	      if (!ua.includes('Android')) return false;
 	      if (!ua.includes('Chrome/')) return false;
-	      if (ua.includes('EdgA/') || ua.includes('OPR/') || ua.includes('SamsungBrowser/')) return false;
+	      if (ua.includes('Edg/') || ua.includes('EdgA/') || ua.includes('OPR/') || ua.includes('SamsungBrowser/')) return false;
 	      return true;
 	    }
 
-	    window.__cdrIsAndroidChrome = isLikelyAndroidChrome();
+	    window.__cdrIsChrome = isLikelyChrome();
 
-	    function updateAndroidPdfUi({ labels }) {
-	      const isAndroid = Boolean(window.__cdrIsAndroidChrome);
-	      if (androidViewer) androidViewer.toggleAttribute('hidden', !isAndroid);
-	      if (isAndroid) {
-	        for (const panel of pdfPanels) panel.setAttribute('hidden', '');
-	      }
-	      if (isAndroid && androidMenuLink) {
-	        androidMenuLink.setAttribute('href', labels.pdf);
-	        androidMenuLink.textContent = `${labels.menu} (PDF)`;
-	      }
+	    function updateChromePdfUi() {
+	      const isChrome = Boolean(window.__cdrIsChrome);
+	      if (chromeViewer) chromeViewer.toggleAttribute('hidden', !isChrome);
+	      if (!isChrome) return;
+	      for (const panel of pdfPanels) panel.setAttribute('hidden', '');
 	    }
 
 	    setLanguage(getDefaultLanguage());
 
 	  </script>
 	  <script type="module">
-	    const isAndroidChrome = Boolean(window.__cdrIsAndroidChrome);
-	    if (!isAndroidChrome) {
+	    const isChrome = Boolean(window.__cdrIsChrome);
+	    if (!isChrome) {
 	      // no-op for non-Android; desktop/iOS keep the native PDF embed.
 	      // (Using a module script so we can import PDF.js cleanly.)
 	    } else {
-	      const viewer = document.querySelector('[data-android-viewer]');
-	      const pagesContainer = document.querySelector('[data-android-pdfjs-pages]');
-	      const statusEl = document.querySelector('[data-android-pdfjs-status]');
-	      const openLink = document.querySelector('[data-android-menu-link]');
+	      const viewer = document.querySelector('[data-chrome-viewer]');
+	      const pagesContainer = document.querySelector('[data-chrome-pdfjs-pages]');
 
 	      const PDFJS_VERSION = '5.4.530';
 	      const PDFJS_BASE = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}/build/`;
@@ -921,17 +903,6 @@
 	      let pdfjsPromise;
 	      let renderToken = 0;
 	      let lastPdfUrl = null;
-
-	      function setStatus(message) {
-	        if (!statusEl) return;
-	        if (!message) {
-	          statusEl.setAttribute('hidden', '');
-	          statusEl.textContent = '';
-	          return;
-	        }
-	        statusEl.removeAttribute('hidden');
-	        statusEl.textContent = message;
-	      }
 
 	      async function loadPdfJs() {
 	        if (pdfjsPromise) return pdfjsPromise;
@@ -961,15 +932,12 @@
 
 	        const token = (renderToken += 1);
 	        lastPdfUrl = pdfUrl;
-
-	        setStatus('Loading…');
 	        clearPages();
 
 	        let pdfjsLib;
 	        try {
 	          pdfjsLib = await loadPdfJs();
 	        } catch {
-	          setStatus(null);
 	          return;
 	        }
 
@@ -1003,11 +971,8 @@
 	              transform: outputScale === 1 ? null : [outputScale, 0, 0, outputScale, 0, 0],
 	            }).promise;
 	          }
-
-	          setStatus(null);
 	        } catch {
 	          clearPages();
-	          setStatus(null);
 	        }
 	      }
 
@@ -1025,14 +990,12 @@
 	        const pdf = detail.pdf;
 	        if (!pdf) return;
 
-	        if (openLink) openLink.setAttribute('href', pdf);
 	        const url = absoluteUrl(pdf);
 	        renderPdf(url);
 	      });
 
-	      if (openLink?.getAttribute('href')) {
-	        renderPdf(absoluteUrl(openLink.getAttribute('href')));
-	      }
+	      const initialPdf = window.__cdrCurrentPdf;
+	      if (initialPdf) renderPdf(absoluteUrl(initialPdf));
 	    }
 	  </script>
 	</body>
