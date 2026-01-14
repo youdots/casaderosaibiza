@@ -161,10 +161,15 @@
       justify-self: end;
       text-align: right;
       align-self: center;
-      white-space: nowrap;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      align-content: center;
+      gap: 0 var(--nav-gap);
+      white-space: normal;
     }
-    .nav-items .link + .link,
-    .nav-items .mobile-break + .link { margin-left: var(--nav-gap); }
+    .nav-items .link + .link { margin-left: var(--nav-gap); }
     .actions {
       grid-area: actions;
       padding: 0 var(--pad) var(--para-gap);
@@ -306,15 +311,13 @@
       .langs {
         padding: 18px var(--pad) 10px 12px;
         justify-self: stretch;
-        white-space: normal;
         text-align: right;
         position: relative;
         z-index: 2;
         align-self: center;
         line-height: var(--line-height);
       }
-      .mobile-break { display: block; height: 0; }
-      .langs .mobile-break + .link { margin-left: 0; }
+      .mobile-break { display: none; }
       .langs .sep { display: none; }
 
       .viewer {
@@ -352,17 +355,18 @@
       <img src="Logo-CdR-Red-Light.svg" alt="Casa de Rosa">
     </header>
 
-    <nav class="langs nav-items" aria-label="Language">
+    <nav class="langs" aria-label="Language">
       <button class="link" type="button" data-lang="es" aria-label="Español">ES</button>
       <button class="link" type="button" data-lang="en" disabled aria-current="true" aria-label="English">EN</button>
       <button class="link" type="button" data-lang="de" aria-label="Deutsch">DE</button>
       <button class="link" type="button" data-lang="fr" aria-label="Français">FR</button>
-      <button class="link" type="button" data-lang="nl" aria-label="Nederlands">NL</button>
-      <button class="link" type="button" data-lang="pt" aria-label="Português">PT</button>
-      <span class="mobile-break" aria-hidden="true"></span>
       <button class="link" type="button" data-lang="ua" aria-label="Українська">UA</button>
       <button class="link" type="button" data-lang="ru" aria-label="Русский">RU</button>
       <button class="link" type="button" data-lang="it" aria-label="Italiano">IT</button>
+      <button class="link" type="button" data-lang="nl" aria-label="Nederlands">NL</button>
+      <button class="link" type="button" data-lang="pt" aria-label="Português">PT</button>
+      <button class="link" type="button" data-lang="he" aria-label="עברית">HE</button>
+      <button class="link" type="button" data-lang="ar" aria-label="العربية">AR</button>
     </nav>
 
     <nav class="actions nav-items" aria-label="Menu actions">
@@ -378,6 +382,8 @@
       <div data-lang-updated="fr" hidden>Mis à jour le 12 janvier 2026</div>
       <div data-lang-updated="nl" hidden>Bijgewerkt 12 januari 2026</div>
       <div data-lang-updated="pt" hidden>Atualizado em 12 de janeiro de 2026</div>
+      <div data-lang-updated="he" hidden>עודכן ב־12 בינואר 2026</div>
+      <div data-lang-updated="ar" hidden>تم التحديث في 12 يناير 2026</div>
       <div data-lang-updated="ua" hidden>Оновлено 12 січня 2026 р.</div>
       <div data-lang-updated="ru" hidden>Обновлено 12 января 2026 г.</div>
       <div data-lang-updated="it" hidden>Aggiornato il 12 gennaio 2026</div>
@@ -489,6 +495,42 @@
         </span>
       </p>
       <p>Seg-Sex 9:00-18:00 | Sáb-Dom Fechado</p>
+    </div>
+
+    <div class="copy" data-lang-copy="he" hidden>
+      <div class="copy-header">
+        <div>Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls</div>
+        <div class="updated">עודכן ב־12 בינואר 2026</div>
+      </div>
+      <p>
+        <span class="address-row">
+          <a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+          <span class="desktop-actions nav-items">
+            <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">תפריט</a>
+            <a class="link" data-action="impressions" href="https://www.instagram.com/casaderosa_ibiza/" target="_blank" rel="noopener noreferrer" tabindex="0">רשמים</a>
+            <button class="link" type="button" data-action="share" style="display:none">שיתוף</button>
+          </span>
+        </span>
+      </p>
+      <p>Mon-Fri 9:00-18:00 | Sat-Sun Closed</p>
+    </div>
+
+    <div class="copy" data-lang-copy="ar" hidden>
+      <div class="copy-header">
+        <div>Healthy Breakfast &amp; Lunch | Specialty Coffee | Vinyls</div>
+        <div class="updated">تم التحديث في 12 يناير 2026</div>
+      </div>
+      <p>
+        <span class="address-row">
+          <a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+          <span class="desktop-actions nav-items">
+            <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">القائمة</a>
+            <a class="link" data-action="impressions" href="https://www.instagram.com/casaderosa_ibiza/" target="_blank" rel="noopener noreferrer" tabindex="0">انطباعات</a>
+            <button class="link" type="button" data-action="share" style="display:none">مشاركة</button>
+          </span>
+        </span>
+      </p>
+      <p>Mon-Fri 9:00-18:00 | Sat-Sun Closed</p>
     </div>
 
     <div class="copy" data-lang-copy="ua" hidden>
@@ -619,6 +661,22 @@
         pdf: 'CdR-Menu-2026-01-12-EN.pdf',
         langTag: 'pt',
       },
+      he: {
+        menu: 'תפריט',
+        impressions: 'רשמים',
+        share: 'שיתוף',
+        shareTitle: 'Casa de Rosa | Healthy Breakfast & Lunch | Specialty Coffee | Vinyls',
+        pdf: 'CdR-Menu-2026-01-12-EN.pdf',
+        langTag: 'he',
+      },
+      ar: {
+        menu: 'القائمة',
+        impressions: 'انطباعات',
+        share: 'مشاركة',
+        shareTitle: 'Casa de Rosa | Healthy Breakfast & Lunch | Specialty Coffee | Vinyls',
+        pdf: 'CdR-Menu-2026-01-12-EN.pdf',
+        langTag: 'ar',
+      },
       ua: {
         menu: 'Меню',
         impressions: 'Враження',
@@ -702,6 +760,8 @@
         if (locale.startsWith('fr')) return 'fr';
         if (locale.startsWith('nl')) return 'nl';
         if (locale.startsWith('pt')) return 'pt';
+        if (locale.startsWith('he') || locale.startsWith('iw')) return 'he';
+        if (locale.startsWith('ar')) return 'ar';
         if (locale.startsWith('it')) return 'it';
         if (locale.startsWith('ru')) return 'ru';
         if (locale.startsWith('uk')) return 'ua';
