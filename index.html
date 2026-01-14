@@ -357,6 +357,8 @@
       <button class="link" type="button" data-lang="en" disabled aria-current="true" aria-label="English">EN</button>
       <button class="link" type="button" data-lang="de" aria-label="Deutsch">DE</button>
       <button class="link" type="button" data-lang="fr" aria-label="Français">FR</button>
+      <button class="link" type="button" data-lang="nl" aria-label="Nederlands">NL</button>
+      <button class="link" type="button" data-lang="pt" aria-label="Português">PT</button>
       <span class="mobile-break" aria-hidden="true"></span>
       <button class="link" type="button" data-lang="ua" aria-label="Українська">UA</button>
       <button class="link" type="button" data-lang="ru" aria-label="Русский">RU</button>
@@ -374,6 +376,8 @@
       <div data-lang-updated="es" hidden>Actualizado el 12 de enero de 2026</div>
       <div data-lang-updated="de" hidden>Aktualisiert am 12. Januar 2026</div>
       <div data-lang-updated="fr" hidden>Mis à jour le 12 janvier 2026</div>
+      <div data-lang-updated="nl" hidden>Bijgewerkt 12 januari 2026</div>
+      <div data-lang-updated="pt" hidden>Atualizado em 12 de janeiro de 2026</div>
       <div data-lang-updated="ua" hidden>Оновлено 12 січня 2026 р.</div>
       <div data-lang-updated="ru" hidden>Обновлено 12 января 2026 г.</div>
       <div data-lang-updated="it" hidden>Aggiornato il 12 gennaio 2026</div>
@@ -449,6 +453,42 @@
         </span>
       </p>
       <p>Lun-Ven 9:00-18:00 | Sam-Dim fermé</p>
+    </div>
+
+    <div class="copy" data-lang-copy="nl" hidden>
+      <div class="copy-header">
+        <div>Gezond ontbijt &amp; lunch | Specialty koffie | Vinyl</div>
+        <div class="updated">Bijgewerkt 12 januari 2026</div>
+      </div>
+      <p>
+        <span class="address-row">
+          <a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+          <span class="desktop-actions nav-items">
+            <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
+            <a class="link" data-action="impressions" href="https://www.instagram.com/casaderosa_ibiza/" target="_blank" rel="noopener noreferrer" tabindex="0">Impressies</a>
+            <button class="link" type="button" data-action="share" style="display:none">Delen</button>
+          </span>
+        </span>
+      </p>
+      <p>Ma-Vr 9:00-18:00 | Za-Zo gesloten</p>
+    </div>
+
+    <div class="copy" data-lang-copy="pt" hidden>
+      <div class="copy-header">
+        <div>Pequeno-almoço e almoço saudáveis | Café de especialidade | Vinil</div>
+        <div class="updated">Atualizado em 12 de janeiro de 2026</div>
+      </div>
+      <p>
+        <span class="address-row">
+          <a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+          <span class="desktop-actions nav-items">
+            <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
+            <a class="link" data-action="impressions" href="https://www.instagram.com/casaderosa_ibiza/" target="_blank" rel="noopener noreferrer" tabindex="0">Impressões</a>
+            <button class="link" type="button" data-action="share" style="display:none">Partilhar</button>
+          </span>
+        </span>
+      </p>
+      <p>Seg-Sex 9:00-18:00 | Sáb-Dom Fechado</p>
     </div>
 
     <div class="copy" data-lang-copy="ua" hidden>
@@ -563,6 +603,22 @@
         pdf: 'CdR-Menu-2026-01-12-EN.pdf',
         langTag: 'fr',
       },
+      nl: {
+        menu: 'Menu',
+        impressions: 'Impressies',
+        share: 'Delen',
+        shareTitle: 'Casa de Rosa | Gezond ontbijt & lunch | Specialty koffie | Vinyl',
+        pdf: 'CdR-Menu-2026-01-12-EN.pdf',
+        langTag: 'nl',
+      },
+      pt: {
+        menu: 'Menu',
+        impressions: 'Impressões',
+        share: 'Partilhar',
+        shareTitle: 'Casa de Rosa | Pequeno-almoço e almoço saudáveis | Café de especialidade | Vinil',
+        pdf: 'CdR-Menu-2026-01-12-EN.pdf',
+        langTag: 'pt',
+      },
       ua: {
         menu: 'Меню',
         impressions: 'Враження',
@@ -644,6 +700,8 @@
         if (locale.startsWith('en')) return 'en';
         if (locale.startsWith('de')) return 'de';
         if (locale.startsWith('fr')) return 'fr';
+        if (locale.startsWith('nl')) return 'nl';
+        if (locale.startsWith('pt')) return 'pt';
         if (locale.startsWith('it')) return 'it';
         if (locale.startsWith('ru')) return 'ru';
         if (locale.startsWith('uk')) return 'ua';
