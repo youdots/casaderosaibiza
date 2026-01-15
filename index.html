@@ -180,6 +180,8 @@
       white-space: nowrap;
     }
 
+    .address-bar { display: none; text-align: center; }
+
     .updated-row {
       display: none;
       grid-area: updated;
@@ -363,18 +365,16 @@
         text-align: center;
       }
 
+      .address-bar { display: block; margin-bottom: var(--para-gap); }
+
 		      .updated-row { display: block; }
 		      .copy-header .updated { display: none; }
-		      .hours-row { display: block; order: 1; margin-bottom: var(--para-gap); }
+		      .hours-row { display: block; }
 		      .hours-row .updated { display: none; }
 
-	      .copy {
-          padding: calc(var(--para-gap) * 1.5) var(--pad) 20px;
-          display: flex;
-          flex-direction: column;
-        }
-	        .address-row-wrap { order: 2; margin-bottom: 0; }
-		      .desktop-actions { display: none; }
+	      .copy { padding: calc(var(--para-gap) * 1.5) var(--pad) 20px; }
+		      .address-row-wrap { display: none; }
+			      .desktop-actions { display: none; }
 
       .copy-header {
         flex-direction: column;
@@ -409,6 +409,9 @@
     </nav>
 
     <nav class="actions nav-items" aria-label="Menu actions">
+      <div class="address-bar" aria-label="Address">
+        <a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a>
+      </div>
       <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
       <a class="link" data-action="impressions" href="https://www.instagram.com/casaderosa_ibiza/" target="_blank" rel="noopener noreferrer" tabindex="0">Impressions</a>
       <button class="link" type="button" data-action="share" style="display:none">Share</button>
