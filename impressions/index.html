@@ -122,6 +122,9 @@ body {
   border: 0 !important;
   outline: 0 !important;
 }
+.feed-content-social-share {
+  display: none !important;
+}
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
   display: none !important;
@@ -195,6 +198,9 @@ button,
   fill: var(--cdr-text) !important;
   stroke: var(--cdr-text) !important;
 }
+.feed-content-social-share {
+  display: none !important;
+}
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
   display: none !important;
@@ -262,6 +268,20 @@ button,
             el.style.setProperty("pointer-events", "none", "important");
           }
 
+          const hideAndCenterShareRow = (root) => {
+            if (!root || typeof root.querySelectorAll !== "function") return;
+            const shareButtons = root.querySelectorAll(".feed-content-social-share");
+            for (const button of shareButtons) {
+              button.style.setProperty("display", "none", "important");
+              const row = button.parentElement;
+              if (!row) continue;
+              row.style.setProperty("justify-content", "center", "important");
+              row.style.setProperty("text-align", "center", "important");
+            }
+          };
+
+          hideAndCenterShareRow(document);
+
           const components = document.querySelectorAll(".commonninja_component");
           for (const component of components) {
             ensureShadowOverrideStyle(component.shadowRoot);
@@ -303,6 +323,8 @@ button,
               el.style.setProperty("background", "transparent", "important");
               el.style.setProperty("background-color", "transparent", "important");
             }
+
+            hideAndCenterShareRow(component.shadowRoot);
           }
         };
 
