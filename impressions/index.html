@@ -64,85 +64,45 @@
         const OVERRIDE_STYLE_ID = "impressions-overrides";
         const SHADOW_OVERRIDE_STYLE_ID = "impressions-overrides-shadow";
         const OVERRIDE_CSS = `
-html,
-body,
-body * {
-  font-family: "Inter", sans-serif !important;
-  color: ${TEXT_COLOR} !important;
+:root {
+  --cdr-bg: ${BG_COLOR};
+  --cdr-text: ${TEXT_COLOR};
 }
 html,
 body {
-  background: ${BG_COLOR} !important;
+  margin: 0;
+  padding: 0;
+  background: var(--cdr-bg) !important;
+  color: var(--cdr-text) !important;
+  font-family: "Inter", sans-serif !important;
 }
 #ft-insta-brd {
   margin: 0 !important;
   padding: 0 !important;
 }
-.commonninja-ribbon,
-[class*="commonninja-ribbon"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  height: 0 !important;
-}
-.feed-header,
-.ft-header {
-  background-color: ${BG_COLOR} !important;
-  background-image: none !important;
+#ft-insta-app,
+#ft-insta-brd,
+.commonninja_component {
+  background: var(--cdr-bg) !important;
+  background-color: var(--cdr-bg) !important;
+  color: var(--cdr-text) !important;
 }
 .ft-sff,
 .ft-sff * {
   font-family: "Inter", sans-serif !important;
-  color: ${TEXT_COLOR} !important;
+  color: var(--cdr-text) !important;
 }
-#ft-insta-app .feed-content-item article,
-#ft-insta-app .feed-content-item article * {
-  font-family: "Inter", sans-serif !important;
-}
-#ft-insta-app,
-.commonninja_component {
-  background-color: ${BG_COLOR} !important;
-  background: ${BG_COLOR} !important;
-}
-.ft-sff {
-  background: ${BG_COLOR} !important;
-  background-color: ${BG_COLOR} !important;
-}
-.feed-content-item,
-.feed-content-item article {
-  background: ${BG_COLOR} !important;
-  background-color: ${BG_COLOR} !important;
-}
-.feed-content-item article * {
-  background: transparent !important;
-  background-color: transparent !important;
+.ft-header,
+.feed-header {
+  background: var(--cdr-bg) !important;
+  background-color: var(--cdr-bg) !important;
 }
 .ft-header-button,
 .ft-header-button * {
-  color: ${TEXT_COLOR} !important;
-  border-color: ${TEXT_COLOR} !important;
+  color: var(--cdr-text) !important;
+  border-color: var(--cdr-text) !important;
   background: transparent !important;
   background-color: transparent !important;
-}
-.feed-content-social-share,
-.feed-content-social-share *,
-.feed-content-activity,
-.feed-content-activity * {
-  color: ${TEXT_COLOR} !important;
-  fill: ${TEXT_COLOR} !important;
-  stroke: ${TEXT_COLOR} !important;
-}
-        `;
-        const SHADOW_OVERRIDE_CSS = `
-:host,
-:host * {
-  font-family: "Inter", sans-serif !important;
-  color: ${TEXT_COLOR} !important;
-}
-:host {
-  background-color: ${BG_COLOR} !important;
-  background: ${BG_COLOR} !important;
 }
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
@@ -152,16 +112,42 @@ body {
   pointer-events: none !important;
   height: 0 !important;
 }
-.feed-content-item article,
-.feed-content-item article * {
+        `;
+        const SHADOW_OVERRIDE_CSS = `
+:host {
+  --cdr-bg: ${BG_COLOR};
+  --cdr-text: ${TEXT_COLOR};
+  background: var(--cdr-bg) !important;
+  background-color: var(--cdr-bg) !important;
+  color: var(--cdr-text) !important;
   font-family: "Inter", sans-serif !important;
+}
+:host * {
+  font-family: "Inter", sans-serif !important;
+  color: var(--cdr-text) !important;
+}
+.ft-header,
+.feed-header {
+  background: var(--cdr-bg) !important;
+  background-color: var(--cdr-bg) !important;
 }
 .feed-content-item,
 .feed-content-item article {
-  background: ${BG_COLOR} !important;
-  background-color: ${BG_COLOR} !important;
+  background: var(--cdr-bg) !important;
+  background-color: var(--cdr-bg) !important;
 }
 .feed-content-item article * {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.feed-follow-button,
+.feed-follow-button *,
+.ft-header-button,
+.ft-header-button *,
+button,
+[role="button"] {
+  color: var(--cdr-text) !important;
+  border-color: var(--cdr-text) !important;
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -169,25 +155,17 @@ body {
 .feed-content-social-share *,
 .feed-content-activity,
 .feed-content-activity * {
-  color: ${TEXT_COLOR} !important;
-  fill: ${TEXT_COLOR} !important;
-  stroke: ${TEXT_COLOR} !important;
+  color: var(--cdr-text) !important;
+  fill: var(--cdr-text) !important;
+  stroke: var(--cdr-text) !important;
 }
-.feed-follow-button,
-.feed-follow-button *,
-button,
-[role="button"] {
-  color: ${TEXT_COLOR} !important;
-  border-color: ${TEXT_COLOR} !important;
-  background: transparent !important;
-  background-color: transparent !important;
-}
-.ft-header-button,
-.ft-header-button * {
-  color: ${TEXT_COLOR} !important;
-  border-color: ${TEXT_COLOR} !important;
-  background: transparent !important;
-  background-color: transparent !important;
+.commonninja-ribbon,
+[class*="commonninja-ribbon"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
 }
         `;
 
@@ -232,32 +210,8 @@ button,
           }
         };
 
-        const applyInlineOverrides = () => {
-          document.documentElement.style.setProperty(
-            "font-family",
-            "\"Inter\", sans-serif",
-            "important"
-          );
-          document.documentElement.style.setProperty("color", TEXT_COLOR, "important");
-          document.documentElement.style.setProperty("background", BG_COLOR, "important");
-          document.body.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
-          document.body.style.setProperty("color", TEXT_COLOR, "important");
-          document.body.style.setProperty("background", BG_COLOR, "important");
-
-          const brd = document.getElementById("ft-insta-brd");
-          if (brd) {
-            brd.style.setProperty("margin", "0", "important");
-            brd.style.setProperty("padding", "0", "important");
-            brd.style.setProperty("background-color", BG_COLOR, "important");
-            brd.style.setProperty("background", BG_COLOR, "important");
-          }
-
-          const app = document.getElementById("ft-insta-app");
-          if (app) {
-            app.style.setProperty("background-color", BG_COLOR, "important");
-            app.style.setProperty("background", BG_COLOR, "important");
-          }
-
+        const applyOverrides = () => {
+          ensureOverrideStyle();
           const ribbons = document.querySelectorAll(
             ".commonninja-ribbon, [class*=\"commonninja-ribbon\"]"
           );
@@ -266,126 +220,50 @@ button,
             el.style.setProperty("visibility", "hidden", "important");
             el.style.setProperty("opacity", "0", "important");
             el.style.setProperty("pointer-events", "none", "important");
-            el.style.setProperty("height", "0", "important");
-          }
-
-          const headers = document.querySelectorAll(".feed-header, .ft-header");
-          for (const el of headers) {
-            el.style.setProperty("background-color", BG_COLOR, "important");
-            el.style.setProperty("background", BG_COLOR, "important");
-            el.style.setProperty("color", TEXT_COLOR, "important");
-          }
-
-          const fontTargets = document.querySelectorAll(".ft-sff, .ft-sff *");
-          for (const el of fontTargets) {
-            el.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
-            el.style.setProperty("color", TEXT_COLOR, "important");
-          }
-
-          const headerButtons = document.querySelectorAll(
-            ".ft-header-button, .ft-header-button *"
-          );
-          for (const el of headerButtons) {
-            el.style.setProperty("color", TEXT_COLOR, "important");
-            el.style.setProperty("border-color", TEXT_COLOR, "important");
-            el.style.setProperty("background", "transparent", "important");
-            el.style.setProperty("background-color", "transparent", "important");
-          }
-
-          const feedArticles = document.querySelectorAll(
-            "#ft-insta-app .feed-content-item article, #ft-insta-app .feed-content-item article *"
-          );
-          for (const el of feedArticles) {
-            el.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
-            el.style.setProperty("background", "transparent", "important");
-            el.style.setProperty("background-color", "transparent", "important");
-            el.style.setProperty("color", TEXT_COLOR, "important");
-          }
-
-          const feedTiles = document.querySelectorAll(
-            "#ft-insta-app .feed-content-item, #ft-insta-app .feed-content-item article"
-          );
-          for (const el of feedTiles) {
-            el.style.setProperty("background", BG_COLOR, "important");
-            el.style.setProperty("background-color", BG_COLOR, "important");
-          }
-
-          const socialTargets = document.querySelectorAll(
-            ".feed-content-social-share, .feed-content-social-share *, " +
-              ".feed-content-activity, .feed-content-activity *"
-          );
-          for (const el of socialTargets) {
-            el.style.setProperty("color", TEXT_COLOR, "important");
-            el.style.setProperty("fill", TEXT_COLOR, "important");
-            el.style.setProperty("stroke", TEXT_COLOR, "important");
           }
 
           const components = document.querySelectorAll(".commonninja_component");
           for (const component of components) {
-            component.style.setProperty("--cdr-bg", BG_COLOR, "important");
-            component.style.setProperty("background-color", BG_COLOR, "important");
-            component.style.setProperty("background", BG_COLOR, "important");
-            component.style.setProperty("color", TEXT_COLOR, "important");
             ensureShadowOverrideStyle(component.shadowRoot);
+            if (!component.shadowRoot) {
+              continue;
+            }
 
-            if (component.shadowRoot) {
-              const shadowRibbons = component.shadowRoot.querySelectorAll(
-                ".commonninja-ribbon, [class*=\"commonninja-ribbon\"]"
-              );
-              for (const el of shadowRibbons) {
-                el.style.setProperty("display", "none", "important");
-                el.style.setProperty("visibility", "hidden", "important");
-                el.style.setProperty("opacity", "0", "important");
-                el.style.setProperty("pointer-events", "none", "important");
-                el.style.setProperty("height", "0", "important");
-              }
+            const shadowRibbons = component.shadowRoot.querySelectorAll(
+              ".commonninja-ribbon, [class*=\"commonninja-ribbon\"]"
+            );
+            for (const el of shadowRibbons) {
+              el.style.setProperty("display", "none", "important");
+              el.style.setProperty("visibility", "hidden", "important");
+              el.style.setProperty("opacity", "0", "important");
+              el.style.setProperty("pointer-events", "none", "important");
+            }
 
-              const shadowArticles = component.shadowRoot.querySelectorAll(
-                ".feed-content-item article, .feed-content-item article *"
-              );
-              for (const el of shadowArticles) {
-                el.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
-                el.style.setProperty("background", "transparent", "important");
-                el.style.setProperty("background-color", "transparent", "important");
-                el.style.setProperty("color", TEXT_COLOR, "important");
-              }
+            const shadowHeaders = component.shadowRoot.querySelectorAll(".feed-header");
+            for (const el of shadowHeaders) {
+              el.style.setProperty("background", BG_COLOR, "important");
+              el.style.setProperty("background-color", BG_COLOR, "important");
+            }
 
-              const shadowTiles = component.shadowRoot.querySelectorAll(
-                ".feed-content-item, .feed-content-item article"
-              );
-              for (const el of shadowTiles) {
-                el.style.setProperty("background", BG_COLOR, "important");
-                el.style.setProperty("background-color", BG_COLOR, "important");
-              }
+            const shadowTiles = component.shadowRoot.querySelectorAll(
+              ".feed-content-item, .feed-content-item article"
+            );
+            for (const el of shadowTiles) {
+              el.style.setProperty("background", BG_COLOR, "important");
+              el.style.setProperty("background-color", BG_COLOR, "important");
+            }
 
-              const shadowSocialTargets = component.shadowRoot.querySelectorAll(
-                ".feed-content-social-share, .feed-content-social-share *, " +
-                  ".feed-content-activity, .feed-content-activity *"
-              );
-              for (const el of shadowSocialTargets) {
-                el.style.setProperty("color", TEXT_COLOR, "important");
-                el.style.setProperty("fill", TEXT_COLOR, "important");
-                el.style.setProperty("stroke", TEXT_COLOR, "important");
-              }
-
-              const shadowHeaderButtons = component.shadowRoot.querySelectorAll(
-                ".ft-header-button, .ft-header-button *, " +
-                  ".feed-follow-button, .feed-follow-button *, " +
-                  "button, [role=\"button\"]"
-              );
-              for (const el of shadowHeaderButtons) {
-                el.style.setProperty("color", TEXT_COLOR, "important");
-                el.style.setProperty("border-color", TEXT_COLOR, "important");
-                el.style.setProperty("background", "transparent", "important");
-                el.style.setProperty("background-color", "transparent", "important");
-              }
+            const shadowFollowButtons = component.shadowRoot.querySelectorAll(
+              ".feed-follow-button, .feed-follow-button *, " +
+                ".ft-header-button, .ft-header-button *"
+            );
+            for (const el of shadowFollowButtons) {
+              el.style.setProperty("color", TEXT_COLOR, "important");
+              el.style.setProperty("border-color", TEXT_COLOR, "important");
+              el.style.setProperty("background", "transparent", "important");
+              el.style.setProperty("background-color", "transparent", "important");
             }
           }
-        };
-
-        const applyOverrides = () => {
-          ensureOverrideStyle();
-          applyInlineOverrides();
         };
 
         const observer = new MutationObserver(applyOverrides);
