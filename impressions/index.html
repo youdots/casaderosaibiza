@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Impressions</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
       :root {
         --cdr-bg: #e2d9d5;
@@ -16,7 +16,7 @@
         margin: 0;
         padding: 0;
         background: var(--cdr-bg);
-        font-family: "Sora", "Inter", sans-serif;
+        font-family: "Inter", sans-serif;
       }
 
       #ft-insta-brd {
@@ -61,6 +61,11 @@
         const OVERRIDE_STYLE_ID = "impressions-overrides";
         const SHADOW_OVERRIDE_STYLE_ID = "impressions-overrides-shadow";
         const OVERRIDE_CSS = `
+html,
+body,
+body * {
+  font-family: "Inter", sans-serif !important;
+}
 #ft-insta-brd {
   margin: 0 !important;
   padding: 0 !important;
@@ -80,7 +85,7 @@
 }
 .ft-sff,
 .ft-sff * {
-  font-family: "Sora", "Inter", sans-serif !important;
+  font-family: "Inter", sans-serif !important;
   background-color: ${BG_COLOR} !important;
   background: ${BG_COLOR} !important;
 }
@@ -99,6 +104,7 @@
 :host * {
   background-color: ${BG_COLOR} !important;
   background: ${BG_COLOR} !important;
+  font-family: "Inter", sans-serif !important;
 }
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
@@ -156,6 +162,13 @@
         };
 
         const applyInlineOverrides = () => {
+          document.documentElement.style.setProperty(
+            "font-family",
+            "\"Inter\", sans-serif",
+            "important"
+          );
+          document.body.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
+
           const brd = document.getElementById("ft-insta-brd");
           if (brd) {
             brd.style.setProperty("margin", "0", "important");
@@ -189,7 +202,7 @@
 
           const fontTargets = document.querySelectorAll(".ft-sff, .ft-sff *");
           for (const el of fontTargets) {
-            el.style.setProperty("font-family", "\"Sora\", \"Inter\", sans-serif", "important");
+            el.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
             el.style.setProperty("background-color", BG_COLOR, "important");
             el.style.setProperty("background", BG_COLOR, "important");
           }
