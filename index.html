@@ -107,20 +107,6 @@
     a { color: inherit; }
     [hidden] { display: none !important; }
 
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      padding: 8px 10px;
-      background: var(--canvas);
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-thickness: 1.25px;
-      text-underline-offset: 3px;
-      z-index: 10;
-    }
-    .skip-link:focus { left: var(--pad); top: 10px; }
-
 	    @media (min-width: 901px) {
 	      body { padding-top: 16px; height: calc(100dvh - 16px); }
 	    }
@@ -276,7 +262,6 @@
 	    @media (min-width: 901px) {
 	      .copy-header > div:first-child { font-size: 22px; }
         .desktop-actions { font-size: 22px; }
-        .address-row { flex-direction: row-reverse; }
         .address-link-wrap { text-align: right; }
 	    }
 
@@ -564,27 +549,8 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
   <div class="frame">
-    <header class="brand" aria-label="Casa de Rosa">
-      <button class="brand-link" type="button" data-lang-home="es" aria-label="Casa de Rosa (Español)">
-        <img src="Logo-CdR-Red-Light.svg" alt="Casa de Rosa">
-      </button>
-    </header>
 
-    <nav class="langs" aria-label="Language">
-      <button class="link" type="button" data-lang="es" aria-label="Español">ES</button>
-      <button class="link" type="button" data-lang="en" disabled aria-current="true" aria-label="English">EN</button>
-      <button class="link" type="button" data-lang="ar" aria-label="العربية">AR</button>
-      <button class="link" type="button" data-lang="de" aria-label="Deutsch">DE</button>
-      <button class="link" type="button" data-lang="fr" aria-label="Français">FR</button>
-      <button class="link" type="button" data-lang="he" aria-label="עברית">HE</button>
-      <button class="link" type="button" data-lang="it" aria-label="Italiano">IT</button>
-      <button class="link" type="button" data-lang="nl" aria-label="Nederlands">NL</button>
-      <button class="link" type="button" data-lang="pt" aria-label="Português">PT</button>
-      <button class="link" type="button" data-lang="ru" aria-label="Русский">RU</button>
-      <button class="link" type="button" data-lang="ua" aria-label="Українська">UA</button>
-    </nav>
 
     <nav class="actions nav-items" aria-label="Menu actions">
       <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
@@ -617,12 +583,12 @@
 	      <p class="hours-row"><span>Mon-Fri 9:00-18:00 | Sat-Sun Closed</span><span class="updated">Updated 12 January 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Impressions</a>
             <button class="link" type="button" data-action="share" style="display:none">Share</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </main>
@@ -634,12 +600,12 @@
 	      <p class="hours-row"><span>Lun-Vie 9:00-18:00 | Sáb-Dom Cerrado</span><span class="updated">Actualizado el 12 de enero de 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-ES.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menú</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Impresiones</a>
             <button class="link" type="button" data-action="share" style="display:none">Compartir</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -651,12 +617,12 @@
 	      <p class="hours-row"><span>Mo-Fr 9:00-18:00 | Sa-So geschlossen</span><span class="updated">Aktualisiert am 12. Januar 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menü</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Eindrücke</a>
             <button class="link" type="button" data-action="share" style="display:none">Teilen</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -668,12 +634,12 @@
 	      <p class="hours-row"><span>Lun-Ven 9:00-18:00 | Sam-Dim fermé</span><span class="updated">Mis à jour le 12 janvier 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Impressions</a>
             <button class="link" type="button" data-action="share" style="display:none">Partager</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -685,12 +651,12 @@
 	      <p class="hours-row"><span>Ma-Vr 9:00-18:00 | Za-Zo gesloten</span><span class="updated">Bijgewerkt 12 januari 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Impressies</a>
             <button class="link" type="button" data-action="share" style="display:none">Delen</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -702,12 +668,12 @@
 	      <p class="hours-row"><span>Seg-Sex 9:00-18:00 | Sáb-Dom Fechado</span><span class="updated">Atualizado em 12 de janeiro de 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Impressões</a>
             <button class="link" type="button" data-action="share" style="display:none">Partilhar</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -719,12 +685,12 @@
 	      <p class="hours-row"><span>ב׳-ו׳ 9:00-18:00 | שבת-א׳ סגור</span><span class="updated">עודכן ב־12 בינואר 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">תפריט</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">רשמים</a>
             <button class="link" type="button" data-action="share" style="display:none">שיתוף</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -736,12 +702,12 @@
 	      <p class="hours-row"><span>الإثنين–الجمعة 9:00-18:00 | السبت–الأحد مغلق</span><span class="updated">تم التحديث في 12 يناير 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">القائمة</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">انطباعات</a>
             <button class="link" type="button" data-action="share" style="display:none">مشاركة</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -753,12 +719,12 @@
 	      <p class="hours-row"><span>Пн-Пт 9:00-18:00 | Сб-Нд зачинено</span><span class="updated">Оновлено 12 січня 2026 р.</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Меню</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Враження</a>
             <button class="link" type="button" data-action="share" style="display:none">Поділитися</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -770,12 +736,12 @@
 	      <p class="hours-row"><span>Пн-Пт 9:00-18:00 | Сб-Вс закрыто</span><span class="updated">Обновлено 12 января 2026 г.</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Меню</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Впечатления</a>
             <button class="link" type="button" data-action="share" style="display:none">Поделиться</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 	    </div>
@@ -787,17 +753,37 @@
 	      <p class="hours-row"><span>Lun-Ven 9:00-18:00 | Sab-Dom chiuso</span><span class="updated">Aggiornato il 12 gennaio 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
-          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
           <span class="desktop-actions nav-items">
             <a class="link" data-action="menu" href="CdR-Menu-2026-01-12-EN.pdf" target="_blank" rel="noopener noreferrer" tabindex="0">Menu</a>
             <a class="link" data-action="impressions" href="impressions/index.html" tabindex="0">Impressioni</a>
             <button class="link" type="button" data-action="share" style="display:none">Condividi</button>
           </span>
+          <span class="address-link-wrap"><a class="link address-link" href="https://maps.app.goo.gl/YesgsyjPg6qBRamg9" target="_blank" rel="noopener noreferrer" tabindex="0">Carrer de Font i Quer, 15, 07800 Eivissa, Ibiza, Illes Balears</a></span>
         </span>
       </p>
 		    </div>
 
-	    <section class="viewer" aria-label="Menu PDF">
+    <nav class="langs" aria-label="Language">
+      <button class="link" type="button" data-lang="es" aria-label="Español">ES</button>
+      <button class="link" type="button" data-lang="en" disabled aria-current="true" aria-label="English">EN</button>
+      <button class="link" type="button" data-lang="ar" aria-label="العربية">AR</button>
+      <button class="link" type="button" data-lang="de" aria-label="Deutsch">DE</button>
+      <button class="link" type="button" data-lang="fr" aria-label="Français">FR</button>
+      <button class="link" type="button" data-lang="he" aria-label="עברית">HE</button>
+      <button class="link" type="button" data-lang="it" aria-label="Italiano">IT</button>
+      <button class="link" type="button" data-lang="nl" aria-label="Nederlands">NL</button>
+      <button class="link" type="button" data-lang="pt" aria-label="Português">PT</button>
+      <button class="link" type="button" data-lang="ru" aria-label="Русский">RU</button>
+      <button class="link" type="button" data-lang="ua" aria-label="Українська">UA</button>
+    </nav>
+
+    <header class="brand" aria-label="Casa de Rosa">
+      <button class="brand-link" type="button" data-lang-home="es" aria-label="Casa de Rosa (Español)">
+        <img src="Logo-CdR-Red-Light.svg" alt="Casa de Rosa">
+      </button>
+    </header>
+
+    <section class="viewer" aria-label="Menu PDF">
 	      <div class="android-pdfjs" data-android-viewer hidden></div>
 	      <object class="pdf" data-lang-panel="en" data="CdR-Menu-2026-01-12-EN.pdf#navpanes=0&pagemode=none" type="application/pdf" aria-label="Menu PDF (English)">
 	        <div class="fallback">
