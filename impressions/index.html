@@ -125,6 +125,17 @@ body {
 .feed-content-social-share {
   display: none !important;
 }
+.feed-content-activity {
+  font-size: 1.1em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+.feed-content-activity svg {
+  width: 1.1em !important;
+  height: 1.1em !important;
+}
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
   display: none !important;
@@ -201,6 +212,17 @@ button,
 .feed-content-social-share {
   display: none !important;
 }
+.feed-content-activity {
+  font-size: 1.1em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+.feed-content-activity svg {
+  width: 1.1em !important;
+  height: 1.1em !important;
+}
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
   display: none !important;
@@ -268,7 +290,7 @@ button,
             el.style.setProperty("pointer-events", "none", "important");
           }
 
-          const hideAndCenterShareRow = (root) => {
+          const adjustSocialRow = (root) => {
             if (!root || typeof root.querySelectorAll !== "function") return;
             const shareButtons = root.querySelectorAll(".feed-content-social-share");
             for (const button of shareButtons) {
@@ -276,11 +298,21 @@ button,
               const row = button.parentElement;
               if (!row) continue;
               row.style.setProperty("justify-content", "center", "important");
+              row.style.setProperty("align-items", "center", "important");
+              row.style.setProperty("text-align", "center", "important");
+            }
+
+            const activityItems = root.querySelectorAll(".feed-content-activity");
+            for (const activity of activityItems) {
+              const row = activity.parentElement;
+              if (!row) continue;
+              row.style.setProperty("justify-content", "center", "important");
+              row.style.setProperty("align-items", "center", "important");
               row.style.setProperty("text-align", "center", "important");
             }
           };
 
-          hideAndCenterShareRow(document);
+          adjustSocialRow(document);
 
           const components = document.querySelectorAll(".commonninja_component");
           for (const component of components) {
@@ -324,7 +356,7 @@ button,
               el.style.setProperty("background-color", "transparent", "important");
             }
 
-            hideAndCenterShareRow(component.shadowRoot);
+            adjustSocialRow(component.shadowRoot);
           }
         };
 
