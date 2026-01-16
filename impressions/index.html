@@ -127,6 +127,7 @@ body {
 }
 .feed-content-activity {
   font-size: 1.1em !important;
+  font-weight: 500 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -135,6 +136,11 @@ body {
 .feed-content-activity svg {
   width: 1.1em !important;
   height: 1.1em !important;
+}
+.feed-footer {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
@@ -214,6 +220,7 @@ button,
 }
 .feed-content-activity {
   font-size: 1.1em !important;
+  font-weight: 500 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -222,6 +229,11 @@ button,
 .feed-content-activity svg {
   width: 1.1em !important;
   height: 1.1em !important;
+}
+.feed-footer {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 .commonninja-ribbon,
 [class*="commonninja-ribbon"] {
@@ -309,6 +321,12 @@ button,
               row.style.setProperty("justify-content", "center", "important");
               row.style.setProperty("align-items", "center", "important");
               row.style.setProperty("text-align", "center", "important");
+              const footer = activity.closest(".feed-footer");
+              if (footer) {
+                footer.style.setProperty("justify-content", "center", "important");
+                footer.style.setProperty("align-items", "center", "important");
+                footer.style.setProperty("text-align", "center", "important");
+              }
             }
           };
 
