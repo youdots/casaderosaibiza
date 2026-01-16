@@ -105,8 +105,16 @@ body {
   background-color: ${BG_COLOR} !important;
   background: ${BG_COLOR} !important;
 }
+.ft-sff {
+  background: ${BG_COLOR} !important;
+  background-color: ${BG_COLOR} !important;
+}
 .feed-content-item,
-.feed-content-item * {
+.feed-content-item article {
+  background: ${BG_COLOR} !important;
+  background-color: ${BG_COLOR} !important;
+}
+.feed-content-item article * {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -149,7 +157,11 @@ body {
   font-family: "Inter", sans-serif !important;
 }
 .feed-content-item,
-.feed-content-item * {
+.feed-content-item article {
+  background: ${BG_COLOR} !important;
+  background-color: ${BG_COLOR} !important;
+}
+.feed-content-item article * {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -165,6 +177,13 @@ body {
 .feed-follow-button *,
 button,
 [role="button"] {
+  color: ${TEXT_COLOR} !important;
+  border-color: ${TEXT_COLOR} !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.ft-header-button,
+.ft-header-button * {
   color: ${TEXT_COLOR} !important;
   border-color: ${TEXT_COLOR} !important;
   background: transparent !important;
@@ -263,6 +282,16 @@ button,
             el.style.setProperty("color", TEXT_COLOR, "important");
           }
 
+          const headerButtons = document.querySelectorAll(
+            ".ft-header-button, .ft-header-button *"
+          );
+          for (const el of headerButtons) {
+            el.style.setProperty("color", TEXT_COLOR, "important");
+            el.style.setProperty("border-color", TEXT_COLOR, "important");
+            el.style.setProperty("background", "transparent", "important");
+            el.style.setProperty("background-color", "transparent", "important");
+          }
+
           const feedArticles = document.querySelectorAll(
             "#ft-insta-app .feed-content-item article, #ft-insta-app .feed-content-item article *"
           );
@@ -271,6 +300,14 @@ button,
             el.style.setProperty("background", "transparent", "important");
             el.style.setProperty("background-color", "transparent", "important");
             el.style.setProperty("color", TEXT_COLOR, "important");
+          }
+
+          const feedTiles = document.querySelectorAll(
+            "#ft-insta-app .feed-content-item, #ft-insta-app .feed-content-item article"
+          );
+          for (const el of feedTiles) {
+            el.style.setProperty("background", BG_COLOR, "important");
+            el.style.setProperty("background-color", BG_COLOR, "important");
           }
 
           const socialTargets = document.querySelectorAll(
@@ -313,6 +350,14 @@ button,
                 el.style.setProperty("color", TEXT_COLOR, "important");
               }
 
+              const shadowTiles = component.shadowRoot.querySelectorAll(
+                ".feed-content-item, .feed-content-item article"
+              );
+              for (const el of shadowTiles) {
+                el.style.setProperty("background", BG_COLOR, "important");
+                el.style.setProperty("background-color", BG_COLOR, "important");
+              }
+
               const shadowSocialTargets = component.shadowRoot.querySelectorAll(
                 ".feed-content-social-share, .feed-content-social-share *, " +
                   ".feed-content-activity, .feed-content-activity *"
@@ -321,6 +366,18 @@ button,
                 el.style.setProperty("color", TEXT_COLOR, "important");
                 el.style.setProperty("fill", TEXT_COLOR, "important");
                 el.style.setProperty("stroke", TEXT_COLOR, "important");
+              }
+
+              const shadowHeaderButtons = component.shadowRoot.querySelectorAll(
+                ".ft-header-button, .ft-header-button *, " +
+                  ".feed-follow-button, .feed-follow-button *, " +
+                  "button, [role=\"button\"]"
+              );
+              for (const el of shadowHeaderButtons) {
+                el.style.setProperty("color", TEXT_COLOR, "important");
+                el.style.setProperty("border-color", TEXT_COLOR, "important");
+                el.style.setProperty("background", "transparent", "important");
+                el.style.setProperty("background-color", "transparent", "important");
               }
             }
           }
