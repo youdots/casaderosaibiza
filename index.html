@@ -463,9 +463,9 @@
 
     .impressions-spinner::after {
       content: "";
-      width: 36px;
-      height: 36px;
-      border: 2px solid var(--accent);
+      width: 54px;
+      height: 54px;
+      border: 3px solid var(--accent);
       border-top-color: transparent;
       border-radius: 50%;
       animation: impressions-spin 0.9s linear infinite;
@@ -867,6 +867,8 @@
       let impressionsLoaded = false;
       let impressionsOpenedAt = null;
       let impressionsFrameWindow = null;
+      const IMPRESSIONS_READY_MESSAGE = 'cdr-impressions-ready';
+      const IMPRESSIONS_REQUEST_MESSAGE = 'cdr-impressions-request-ready';
 
     const ui = {
       en: {
@@ -1015,6 +1017,25 @@
       }
     }
 
+    function showImpressionsSpinner() {
+      if (impressionsSpinner) impressionsSpinner.removeAttribute('hidden');
+    }
+
+    function hideImpressionsSpinner() {
+      if (impressionsSpinner) impressionsSpinner.setAttribute('hidden', '');
+    }
+
+    function requestImpressionsReady() {
+      if (!impressionsFrame) return;
+      try {
+        const frameWindow = impressionsFrame.contentWindow;
+        if (!frameWindow) return;
+        frameWindow.postMessage({ type: IMPRESSIONS_REQUEST_MESSAGE }, window.location.origin);
+      } catch {
+        // ignore cross-origin access issues
+      }
+    }
+
     function handleImpressionsFrameKeydown(event) {
       if (event.key !== 'Escape') return;
       if (impressionsOverlay && !impressionsOverlay.hidden) {
@@ -1118,9 +1139,8 @@
         impressionsLoaded = false;
         impressionsFrame.setAttribute('src', impressionsSrc);
       }
-      if (impressionsSpinner) {
-        impressionsSpinner.toggleAttribute('hidden', impressionsLoaded);
-      }
+      showImpressionsSpinner();
+      requestImpressionsReady();
       if (!skipHistory && !impressionsHistoryEntry) {
         impressionsHistoryEntry = true;
         history.pushState({ impressions: true }, '', '#impressions');
@@ -1224,7 +1244,7 @@
         }
         impressionsLoaded = true;
         bindImpressionsFrameEscape();
-        if (impressionsSpinner) impressionsSpinner.setAttribute('hidden', '');
+        requestImpressionsReady();
       });
     }
 
@@ -1282,6 +1302,12 @@
         event.preventDefault();
         closeImpressionsOverlay('escape');
       }
+    });
+
+    window.addEventListener('message', (event) => {
+      if (event.origin !== window.location.origin) return;
+      if (!event.data || event.data.type !== IMPRESSIONS_READY_MESSAGE) return;
+      hideImpressionsSpinner();
     });
 
     window.addEventListener('popstate', (event) => {

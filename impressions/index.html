@@ -315,6 +315,54 @@ button,
             clearInterval(interval);
           }
         }, 500);
+
+        const READY_MESSAGE = { type: "cdr-impressions-ready" };
+        const READY_REQUEST_TYPE = "cdr-impressions-request-ready";
+        let impressionsReady = false;
+
+        const notifyReady = () => {
+          if (!window.parent) return;
+          try {
+            window.parent.postMessage(READY_MESSAGE, window.location.origin);
+          } catch {
+            // ignore postMessage failures
+          }
+        };
+
+        const isContentReady = () => {
+          const grid = document.querySelector(".grid-layout");
+          if (grid && grid.children.length > 0) return true;
+          const component = document.querySelector(".commonninja_component");
+          if (component && component.shadowRoot) {
+            const items = component.shadowRoot.querySelectorAll(
+              ".feed-content-item, .feed-content-item article"
+            );
+            if (items.length > 0) return true;
+          }
+          return false;
+        };
+
+        const checkReady = () => {
+          if (impressionsReady) return;
+          if (isContentReady()) {
+            impressionsReady = true;
+            notifyReady();
+          }
+        };
+
+        const readyObserver = new MutationObserver(checkReady);
+        readyObserver.observe(document.documentElement, { childList: true, subtree: true });
+        window.addEventListener("load", checkReady);
+
+        window.addEventListener("message", (event) => {
+          if (event.origin !== window.location.origin) return;
+          if (!event.data || event.data.type !== READY_REQUEST_TYPE) return;
+          if (impressionsReady) {
+            notifyReady();
+          } else {
+            checkReady();
+          }
+        });
       })();
     </script>
   </body>
