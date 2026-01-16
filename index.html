@@ -864,6 +864,7 @@
       let suppressPopstate = false;
       let impressionsLoaded = false;
       let impressionsOpenedAt = null;
+      let impressionsFrameWindow = null;
 
     const ui = {
       en: {
@@ -1009,6 +1010,29 @@
         window.plausible(name, { props: buildTrackingProps(props) });
       } catch {
         // ignore analytics failures
+      }
+    }
+
+    function handleImpressionsFrameKeydown(event) {
+      if (event.key !== 'Escape') return;
+      if (impressionsOverlay && !impressionsOverlay.hidden) {
+        event.preventDefault();
+        closeImpressionsOverlay('escape');
+      }
+    }
+
+    function bindImpressionsFrameEscape() {
+      if (!impressionsFrame) return;
+      try {
+        const frameWindow = impressionsFrame.contentWindow;
+        if (!frameWindow || frameWindow === impressionsFrameWindow) return;
+        if (impressionsFrameWindow) {
+          impressionsFrameWindow.removeEventListener('keydown', handleImpressionsFrameKeydown);
+        }
+        impressionsFrameWindow = frameWindow;
+        impressionsFrameWindow.addEventListener('keydown', handleImpressionsFrameKeydown);
+      } catch {
+        // ignore cross-origin access issues
       }
     }
 
@@ -1197,6 +1221,7 @@
           });
         }
         impressionsLoaded = true;
+        bindImpressionsFrameEscape();
         if (impressionsSpinner) impressionsSpinner.setAttribute('hidden', '');
       });
     }
