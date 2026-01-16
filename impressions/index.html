@@ -84,6 +84,10 @@
   background-color: ${BG_COLOR} !important;
   background: ${BG_COLOR} !important;
 }
+#ft-insta-app .feed-content-item article,
+#ft-insta-app .feed-content-item article * {
+  font-family: "Inter", sans-serif !important;
+}
 #ft-insta-app,
 .commonninja_component {
   background-color: ${BG_COLOR} !important;
@@ -103,6 +107,10 @@
   opacity: 0 !important;
   pointer-events: none !important;
   height: 0 !important;
+}
+.feed-content-item article,
+.feed-content-item article * {
+  font-family: "Inter", sans-serif !important;
 }
         `;
 
@@ -186,6 +194,13 @@
             el.style.setProperty("background", BG_COLOR, "important");
           }
 
+          const feedArticles = document.querySelectorAll(
+            "#ft-insta-app .feed-content-item article, #ft-insta-app .feed-content-item article *"
+          );
+          for (const el of feedArticles) {
+            el.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
+          }
+
           const components = document.querySelectorAll(".commonninja_component");
           for (const component of components) {
             component.style.setProperty("--cdr-bg", BG_COLOR, "important");
@@ -203,6 +218,13 @@
                 el.style.setProperty("opacity", "0", "important");
                 el.style.setProperty("pointer-events", "none", "important");
                 el.style.setProperty("height", "0", "important");
+              }
+
+              const shadowArticles = component.shadowRoot.querySelectorAll(
+                ".feed-content-item article, .feed-content-item article *"
+              );
+              for (const el of shadowArticles) {
+                el.style.setProperty("font-family", "\"Inter\", sans-serif", "important");
               }
             }
           }
