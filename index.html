@@ -250,6 +250,10 @@
     @supports selector(:focus-visible) {
       .link:focus:not(:focus-visible) { outline: none; }
     }
+    @media (hover: hover) and (pointer: fine) {
+      .link:hover { outline: 2px solid currentColor; outline-offset: 3px; }
+      .link:disabled:hover { outline: none; }
+    }
 
     .copy {
       grid-area: copy;
