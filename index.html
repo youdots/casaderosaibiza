@@ -353,15 +353,16 @@
     .impressions-lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(226, 217, 213, 0.92);
+      background: rgba(226, 217, 213, 0.78);
       display: grid;
       place-items: center;
-      padding: clamp(18px, 4vw, 40px);
+      padding: clamp(26px, 6vw, 72px);
       z-index: 30;
     }
 
     .impressions-panel {
-      width: 100%;
+      position: relative;
+      width: min(1100px, 100%);
       height: 100%;
       background: var(--canvas);
       display: flex;
@@ -369,29 +370,28 @@
       overflow: hidden;
     }
 
-    .impressions-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 16px;
-    }
-
-    .impressions-title {
-      font-size: 18px;
-      line-height: 1.3;
-    }
-
     .impressions-close {
       appearance: none;
       -webkit-appearance: none;
       border: 1px solid var(--accent);
-      background: transparent;
+      background: var(--canvas);
       color: inherit;
       font: inherit;
       border-radius: 999px;
-      padding: 4px 12px;
+      width: 34px;
+      height: 34px;
+      padding: 0;
       cursor: pointer;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      line-height: 1;
     }
 
     .impressions-close:focus { outline: none; }
@@ -476,8 +476,10 @@
         gap: 4px;
       }
 
-      .impressions-header { padding: 10px 14px; }
-      .impressions-title { font-size: 17px; }
+      .impressions-close {
+        top: 10px;
+        right: 10px;
+      }
 
 	      .updated { text-align: right; }
 	    }
@@ -753,11 +755,8 @@
 	  </div>
 
     <div class="impressions-lightbox" id="impressions-lightbox" data-impressions-overlay aria-hidden="true" hidden>
-      <div class="impressions-panel" role="dialog" aria-modal="true" aria-labelledby="impressions-title" data-impressions-panel>
-        <div class="impressions-header">
-          <div class="impressions-title" id="impressions-title" data-impressions-title>Impressions</div>
-          <button class="impressions-close" type="button" data-impressions-close aria-label="Close">Close</button>
-        </div>
+      <div class="impressions-panel" role="dialog" aria-modal="true" aria-label="Impressions" data-impressions-panel>
+        <button class="impressions-close" type="button" data-impressions-close aria-label="Close">X</button>
         <div class="impressions-body">
           <iframe class="impressions-frame" data-impressions-frame data-impressions-src="impressions/index.html" title="Impressions" loading="lazy"></iframe>
         </div>
@@ -776,8 +775,8 @@
 	    const impressionsLinks = Array.from(document.querySelectorAll('[data-action="impressions"]'));
 	    const shareButtons = Array.from(document.querySelectorAll('[data-action="share"]'));
 	    const impressionsOverlay = document.querySelector('[data-impressions-overlay]');
+	    const impressionsPanel = document.querySelector('[data-impressions-panel]');
 	    const impressionsFrame = document.querySelector('[data-impressions-frame]');
-	    const impressionsTitle = document.querySelector('[data-impressions-title]');
 	    const impressionsClose = document.querySelector('[data-impressions-close]');
 	    const mainFrame = document.querySelector('.frame');
       const impressionsSrc = impressionsFrame?.dataset.impressionsSrc || 'impressions/index.html';
@@ -925,10 +924,9 @@
         link.removeAttribute('rel');
       }
 
-      if (impressionsTitle) impressionsTitle.textContent = labels.impressions;
+      if (impressionsPanel) impressionsPanel.setAttribute('aria-label', labels.impressions);
       if (impressionsFrame) impressionsFrame.setAttribute('title', labels.impressions);
       if (impressionsClose) {
-        impressionsClose.textContent = labels.close;
         impressionsClose.setAttribute('aria-label', labels.close);
       }
     }
