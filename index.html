@@ -864,6 +864,7 @@
       const impressionsSpinner = document.querySelector('[data-impressions-spinner]');
 	    const mainFrame = document.querySelector('.frame');
       const impressionsSrc = impressionsFrame?.dataset.impressionsSrc || 'impressions/index.html';
+	    const focusableLinks = Array.from(document.querySelectorAll('a.link'));
       let impressionsLastFocus = null;
       let impressionsHistoryEntry = false;
       let suppressPopstate = false;
@@ -1382,6 +1383,10 @@
 	    }
 
 	    setLanguage(getDefaultLanguage());
+
+      for (const link of focusableLinks) {
+        link.setAttribute('tabindex', '0');
+      }
 
 	  </script>
 	  <script type="module">
