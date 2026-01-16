@@ -436,6 +436,28 @@
       background: var(--canvas);
     }
 
+    .impressions-spinner {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .impressions-spinner::after {
+      content: "";
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--accent);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: impressions-spin 0.9s linear infinite;
+    }
+
+    @keyframes impressions-spin {
+      to { transform: rotate(360deg); }
+    }
+
 	    @media (max-width: 900px) {
 	      :root { --pad: 18px; }
 	      :root { --mobile-center-margin: 30px; }
@@ -788,6 +810,7 @@
           <span class="impressions-close-label" data-impressions-close-label>Close</span>
         </button>
         <div class="impressions-body">
+          <div class="impressions-spinner" data-impressions-spinner hidden></div>
           <iframe class="impressions-frame" data-impressions-frame data-impressions-src="impressions/index.html" title="Impressions" loading="lazy"></iframe>
         </div>
       </div>
@@ -809,13 +832,15 @@
 	    const impressionsFrame = document.querySelector('[data-impressions-frame]');
 	    const impressionsClose = document.querySelector('[data-impressions-close]');
 	    const impressionsCloseLabel = document.querySelector('[data-impressions-close-label]');
+      const impressionsSpinner = document.querySelector('[data-impressions-spinner]');
 	    const mainFrame = document.querySelector('.frame');
-	    const impressionsSrc = impressionsFrame?.dataset.impressionsSrc || 'impressions/index.html';
+      const impressionsSrc = impressionsFrame?.dataset.impressionsSrc || 'impressions/index.html';
 	    const shareSeparators = [];
 	    const focusableLinks = Array.from(document.querySelectorAll('a.link'));
       let impressionsLastFocus = null;
       let impressionsHistoryEntry = false;
       let suppressPopstate = false;
+      let impressionsLoaded = false;
 
     const ui = {
       en: {
@@ -1007,6 +1032,9 @@
       if (impressionsFrame && !impressionsFrame.getAttribute('src')) {
         impressionsFrame.setAttribute('src', impressionsSrc);
       }
+      if (impressionsSpinner) {
+        impressionsSpinner.toggleAttribute('hidden', impressionsLoaded);
+      }
       if (!skipHistory && !impressionsHistoryEntry) {
         impressionsHistoryEntry = true;
         history.pushState({ impressions: true }, '', '#impressions');
@@ -1083,6 +1111,13 @@
         event.preventDefault();
         trackEvent('Impressions Open', { lang: document.documentElement.lang || '' });
         openImpressionsOverlay();
+      });
+    }
+
+    if (impressionsFrame) {
+      impressionsFrame.addEventListener('load', () => {
+        impressionsLoaded = true;
+        if (impressionsSpinner) impressionsSpinner.setAttribute('hidden', '');
       });
     }
 
