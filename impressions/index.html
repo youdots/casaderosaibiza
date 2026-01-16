@@ -56,6 +56,33 @@
       <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
       <div class="commonninja_component pid-c9570fd1-c5cc-4cc9-893e-1fbffbb92d2c"></div>
     </div>
+    <script>
+      const applyOverrides = () => {
+        const targets = document.querySelectorAll(
+          ".commonninja-ribbon, [class*=\"commonninja-ribbon\"]"
+        );
+        for (const el of targets) {
+          el.style.setProperty("display", "none", "important");
+          el.style.setProperty("visibility", "hidden", "important");
+        }
+
+        const headers = document.querySelectorAll(".feed-header");
+        for (const el of headers) {
+          el.style.setProperty("background-color", "transparent", "important");
+        }
+
+        const fontTargets = document.querySelectorAll("body, .feed, .feed *");
+        for (const el of fontTargets) {
+          el.style.setProperty("font-family", "\"Sora\", \"Inter\", sans-serif", "important");
+        }
+      };
+
+      const observer = new MutationObserver(() => applyOverrides());
+      observer.observe(document.body, { childList: true, subtree: true });
+      window.addEventListener("load", applyOverrides);
+      setTimeout(applyOverrides, 500);
+      setTimeout(applyOverrides, 2000);
+    </script>
     <style>
       .commonninja-ribbon,
       [class*="commonninja-ribbon"] {
@@ -64,7 +91,7 @@
       }
 
       .feed-header {
-        background-color: none !important;
+        background-color: transparent !important;
       }
     </style>
   </body>
