@@ -894,6 +894,7 @@
       let impressionsLoaded = false;
       let impressionsOpenedAt = null;
       let impressionsFrameWindow = null;
+      let lastInputType = 'keyboard';
       const IMPRESSIONS_READY_MESSAGE = 'cdr-impressions-ready';
       const IMPRESSIONS_REQUEST_MESSAGE = 'cdr-impressions-request-ready';
 
@@ -1041,6 +1042,13 @@
         window.plausible(name, { props: buildTrackingProps(props) });
       } catch {
         // ignore analytics failures
+      }
+    }
+
+    function blurIfPointer(target) {
+      if (lastInputType !== 'pointer') return;
+      if (target && typeof target.blur === 'function') {
+        target.blur();
       }
     }
 
@@ -1251,6 +1259,7 @@
           source: 'link',
           placement: getActionPlacement(link),
         });
+        blurIfPointer(link);
       });
     }
 
@@ -1276,6 +1285,7 @@
           pdf_lang: getPdfLang(href),
           placement: getActionPlacement(link),
         });
+        blurIfPointer(link);
       });
     }
 
@@ -1298,6 +1308,7 @@
           href,
           placement: getAddressPlacement(link),
         });
+        blurIfPointer(link);
       });
     }
 
@@ -1317,10 +1328,24 @@
     }
 
     document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab') lastInputType = 'keyboard';
       if (event.key !== 'Escape') return;
       if (impressionsOverlay && !impressionsOverlay.hidden) {
         event.preventDefault();
         closeImpressionsOverlay('escape');
+      }
+    });
+
+    document.addEventListener('pointerdown', () => {
+      lastInputType = 'pointer';
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible') return;
+      if (lastInputType !== 'pointer') return;
+      const active = document.activeElement;
+      if (active && active.classList && active.classList.contains('link')) {
+        active.blur();
       }
     });
 
