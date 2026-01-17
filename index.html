@@ -301,6 +301,10 @@
 	      gap: 16px;
 	    }
 	    .hours-row > span:first-child { font-weight: 500; }
+	    .copy[dir="rtl"] .hours-row {
+	      direction: rtl;
+	      unicode-bidi: plaintext;
+	    }
 
 	    .desktop-actions {
 	      flex-shrink: 0;
@@ -705,7 +709,7 @@
 	      </div>
 	      
       
-      <p class="hours-row"><span>ב׳-ו׳ 9:00-18:00 | שבת-א׳ סגור</span><span class="updated">עודכן ב־12 בינואר 2026</span></p>
+      <p class="hours-row"><span>ב׳-ו׳ 18:00-9:00 | שבת-א׳ סגור</span><span class="updated">עודכן ב־12 בינואר 2026</span></p>
       <p class="address-row-wrap">
         <span class="address-row">
           <span class="desktop-actions nav-items">
