@@ -95,7 +95,7 @@ jobs:
           git add -A
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: cache bust [skip ci]"
+          git commit -m "Cache bust assets [skip ci]"
           git push origin HEAD:main
 
       - name: Set up SSH
