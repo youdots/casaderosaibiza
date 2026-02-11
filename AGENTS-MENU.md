@@ -1,88 +1,95 @@
 # AGENTS-MENU.md
 
 ## Purpose
-Server-side runbook for menu URL stability and SEO control.
+Operational runbook for stable menu URLs, safe rollouts, and SEO consistency on:
+- `https://casaderosaibiza.com` (live)
+- `https://staging.casaderosaibiza.com` (staging)
 
-Goals:
-- old menu links keep working
-- site always serves only the latest EN/ES menus
-- only canonical menu URLs are indexed
-
-Note:
-- `-BW.pdf` variants are discontinued and should not be expected going forward.
+Primary goals:
+- all old menu links keep working
+- only canonical EN/ES menu URLs are presented publicly
+- live indexing points to canonical URLs only
 
 ## Canonical URL Strategy
-Use only these public menu URLs:
+Public canonical menu URLs:
 - `/Casa-de-Rosa-Ibiza-Menu-EN.pdf`
 - `/Casa-de-Rosa-Ibiza-Menu-ES.pdf`
 
-These canonical URLs must return `200` directly (not redirect).
+Canonical requirements:
+- return `200` with `Content-Type: application/pdf`
+- must not redirect
+- must not fall back to `index.html`
 
-## Server Implementation
+## Legacy URL Compatibility
+Legacy dated URLs must `301` to canonical:
+- `CdR-Menu-YYYY-MM-DD-EN.pdf`
+- `CdR-Menu-YYYY-MM-DD-ES.pdf`
+- `CdR-Menu-YYYY-MM-DD-EN-BW.pdf`
+- `CdR-Menu-YYYY-MM-DD-ES-BW.pdf`
+- `Casa-de-Rosa-Ibiza-Menu-YYYY-MM-DD-EN.pdf`
+- `Casa-de-Rosa-Ibiza-Menu-YYYY-MM-DD-ES.pdf`
 
-### 1) Nginx routing
-Apply on both staging and live virtual hosts.
+## Nginx Rules (Live + Staging)
+Implement in both virtual hosts before generic SPA fallback:
 
-- Canonical URLs: serve latest file (via symlink/copy target).
-- Old dated URLs: `301` to canonical.
+1) Canonical endpoints as exact matches (`location =`) with `try_files ... =404`.
+2) Legacy regex locations that return `301` to canonical EN/ES paths.
+3) Generic `location /` remains SPA fallback (`try_files $uri $uri/ /index.html`).
 
-Suggested redirects:
-- any legacy `CdR-Menu-YYYY-MM-DD-EN.pdf` -> `/Casa-de-Rosa-Ibiza-Menu-EN.pdf`
-- any legacy `CdR-Menu-YYYY-MM-DD-ES.pdf` -> `/Casa-de-Rosa-Ibiza-Menu-ES.pdf`
-- any dated `Casa-de-Rosa-Ibiza-Menu-YYYY-MM-DD-EN.pdf` -> `/Casa-de-Rosa-Ibiza-Menu-EN.pdf`
-- any dated `Casa-de-Rosa-Ibiza-Menu-YYYY-MM-DD-ES.pdf` -> `/Casa-de-Rosa-Ibiza-Menu-ES.pdf`
+Caching policy:
+- canonical menu URLs: `Cache-Control: no-cache, must-revalidate`
+- dated files (if served directly outside redirects): `Cache-Control: public, max-age=31536000, immutable`
 
-No `-BW` redirect rules are needed for future rollouts.
+Staging indexing policy:
+- keep `X-Robots-Tag: noindex, nofollow, noarchive`
+- keep `robots.txt` as `Disallow: /`
 
-### 2) Deploy script behavior
-Update deploy scripts (`/usr/local/bin/deploy-casaderosaibiza` and staging counterpart) to atomically repoint canonical files to newest dated files.
+## Deploy Script Rules
+Scripts:
+- `/usr/local/bin/deploy-casaderosaibiza`
+- `/usr/local/bin/deploy-casaderosaibiza-staging`
 
-Example logic:
-1. Find newest EN file matching `Casa-de-Rosa-Ibiza-Menu-*-EN.pdf`.
-2. Find newest ES file matching `Casa-de-Rosa-Ibiza-Menu-*-ES.pdf`.
-3. Fail deployment if either is missing.
-4. Update canonical targets atomically:
+After rsync, scripts must atomically repoint canonical files:
+1) Resolve latest EN and ES source file.
+   - prefer `Casa-de-Rosa-Ibiza-Menu-YYYY-MM-DD-(EN|ES).pdf`
+   - fallback to legacy `CdR-Menu-YYYY-MM-DD-(EN|ES).pdf`
+2) Fail deployment if EN or ES source is missing.
+3) Atomically update:
    - `Casa-de-Rosa-Ibiza-Menu-EN.pdf`
    - `Casa-de-Rosa-Ibiza-Menu-ES.pdf`
 
-Use symlinks (`ln -sfn`) or copy+rename atomically.
+Preferred implementation:
+- symlink + atomic rename (`ln -s` to temp name, then `mv -Tf`)
 
-### 3) Caching headers
-- Canonical URLs: `Cache-Control: no-cache` (or very short TTL) so newest menu is always fetched.
-- Dated files: long cache (`public, max-age=31536000, immutable`) if directly requested.
-
-## SEO Implementation
-
-### 4) Indexing policy
-- Only canonical menu URLs should appear in sitemap.
-- Dated menu URLs should not appear in sitemap.
-- Prefer redirects over robots blocking for old URLs, so crawlers can consolidate signals.
+## Repo Content Rules
+- `index.html` should link to canonical menu URLs (not dated URLs).
+- `sitemap.xml` should list canonical menu URLs only.
+- live `robots.txt` should not block legacy menu URLs; rely on redirects for consolidation.
 
 ## Validation Checklist
-Run after deploy on staging and live:
+Run after each deploy on both hosts.
 
-1. Canonical EN returns 200:
+Canonical behavior:
 - `curl -I https://<host>/Casa-de-Rosa-Ibiza-Menu-EN.pdf`
-
-2. Canonical ES returns 200:
 - `curl -I https://<host>/Casa-de-Rosa-Ibiza-Menu-ES.pdf`
+- expect: `200`, `Content-Type: application/pdf`, no redirect
 
-3. Old dated EN redirects to canonical:
+Legacy redirect behavior:
 - `curl -I https://<host>/CdR-Menu-2026-01-26-EN.pdf`
-
-4. Old dated ES redirects to canonical:
 - `curl -I https://<host>/CdR-Menu-2026-01-26-ES.pdf`
-
-5. Any dated Casa-de-Rosa URL redirects to canonical:
+- `curl -I https://<host>/CdR-Menu-2026-01-26-EN-BW.pdf`
+- `curl -I https://<host>/CdR-Menu-2026-01-26-ES-BW.pdf`
 - `curl -I https://<host>/Casa-de-Rosa-Ibiza-Menu-2026-02-09-EN.pdf`
 - `curl -I https://<host>/Casa-de-Rosa-Ibiza-Menu-2026-02-09-ES.pdf`
+- expect: `301` to canonical EN/ES URL
 
-Expected redirects:
-- `301` with `Location: /Casa-de-Rosa-Ibiza-Menu-EN.pdf` or `/Casa-de-Rosa-Ibiza-Menu-ES.pdf`
+SEO checks:
+- live `sitemap.xml` includes canonical menu URLs only
+- staging includes `X-Robots-Tag: noindex, nofollow, noarchive`
 
-## Ongoing Two-Week Menu Update Process
-1. Add new dated EN/ES PDFs.
-2. Deploy.
-3. Deploy script repoints canonical EN/ES PDFs.
-4. Verify checklist above.
-5. Keep sitemap canonical-only.
+## Update Workflow
+1) Add new dated EN/ES PDFs to repository.
+2) Keep canonical menu references in `index.html` unchanged.
+3) Deploy staging, run checklist, then deploy live.
+4) Confirm canonical files now point to latest dated EN/ES sources.
+5) Keep a short release note with date and menu source files.

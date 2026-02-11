@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /CdR-Menu-2026-01-26-EN.pdf
-Disallow: /CdR-Menu-2026-01-26-ES.pdf
-Disallow: /CdR-Menu-2026-01-26-EN-BW.pdf
-Disallow: /CdR-Menu-2026-01-26-ES-BW.pdf
 
 Sitemap: https://casaderosaibiza.com/sitemap.xml
