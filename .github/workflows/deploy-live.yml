@@ -1,9 +1,6 @@
-name: Deploy (Staging Default)
+name: Deploy Live
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -11,27 +8,22 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Set up SSH
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          echo "${{ secrets.STAGING_DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           PORT="${{ secrets.DEPLOY_PORT }}"
           PORT="${PORT:-22}"
           ssh-keyscan -p "$PORT" -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Deploy staging site
+      - name: Deploy live site
         shell: bash
         run: |
           set -euo pipefail
           PORT="${{ secrets.DEPLOY_PORT }}"
           PORT="${PORT:-22}"
-          ssh -p "$PORT" "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" /usr/local/bin/deploy-casaderosaibiza-staging
+          ssh -p "$PORT" "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" /usr/local/bin/deploy-casaderosaibiza
