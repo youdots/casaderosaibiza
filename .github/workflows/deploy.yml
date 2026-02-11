@@ -10,93 +10,11 @@ jobs:
   deploy:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Update cache bust
-        shell: bash
-        env:
-          CACHE_BUST: ${{ github.run_id }}
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import os
-          import re
-          from pathlib import Path
-          from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
-
-          version = os.environ["CACHE_BUST"]
-          allowed_domain = "casaderosaibiza.com"
-          extensions = (".pdf", ".png", ".svg", ".ico", ".woff2", ".js", ".css", ".webmanifest")
-          exclude_parts = {".git", "node_modules", "tests"}
-
-          def should_update_url(url: str) -> bool:
-            if url.startswith(("mailto:", "tel:", "data:", "javascript:", "#")):
-              return False
-            parsed = urlparse(url)
-            if parsed.scheme in ("http", "https"):
-              if parsed.netloc != allowed_domain:
-                return False
-              path = parsed.path
-            elif parsed.scheme:
-              return False
-            else:
-              path = parsed.path
-            return path.lower().endswith(extensions)
-
-          def update_url(url: str) -> str:
-            if not should_update_url(url):
-              return url
-            parsed = urlparse(url)
-            params = [(k, v) for k, v in parse_qsl(parsed.query, keep_blank_values=True) if k != "v"]
-            params.append(("v", version))
-            new_query = urlencode(params)
-            new_parsed = parsed._replace(query=new_query)
-            return urlunparse(new_parsed)
-
-          def update_text(text: str) -> str:
-            def repl(match: re.Match) -> str:
-              url = match.group("url")
-              new_url = update_url(url)
-              if new_url == url:
-                return match.group(0)
-              quote = match.group("quote")
-              return f"{quote}{new_url}{quote}"
-
-            return re.sub(r"(?P<quote>[\"'])(?P<url>[^\"']+)(?P=quote)", repl, text)
-
-          changed = False
-          for path in Path(".").rglob("*.html"):
-            if exclude_parts.intersection(path.parts):
-              continue
-            text = path.read_text()
-            new_text = update_text(text)
-            if new_text != text:
-              path.write_text(new_text)
-              changed = True
-
-          if not changed:
-            print("No cache-bust updates needed.")
-          PY
-
-      - name: Commit cache bust
-        shell: bash
-        run: |
-          set -euo pipefail
-          if git diff --quiet; then
-            echo "No cache-bust changes to commit."
-            exit 0
-          fi
-          git add -A
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Cache bust assets [skip ci]"
-          git push origin HEAD:main
 
       - name: Set up SSH
         shell: bash
