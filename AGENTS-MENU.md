@@ -66,6 +66,50 @@ Preferred implementation:
 - `sitemap.xml` should list canonical menu URLs only.
 - live `robots.txt` should not block legacy menu URLs; rely on redirects for consolidation.
 
+## Localized "Updated" Date Strings (Critical)
+
+**Requirement:** When updating menu PDFs, the "Last updated" date strings in `index.html` MUST be updated for ALL supported languages.
+
+**Location in index.html:**
+Look for `<div class="updated-row">` containing multiple `<div data-lang-updated="LANG">` elements.
+
+**Languages to update:**
+- `en`: "Updated DD Month YYYY" (e.g., "Updated 23 February 2026")
+- `ar`: "تم التحديث في DD Month YYYY" (Arabic)
+- `de`: "Aktualisiert am DD. Month YYYY" (German)
+- `es`: "Actualizado el DD de month de YYYY" (Spanish)
+- `fr`: "Mis à jour le DD month YYYY" (French)
+- `he`: "עודכן ב־DD בMonth YYYY" (Hebrew, RTL)
+- `it`: "Aggiornato il DD month YYYY" (Italian)
+- `nl`: "Bijgewerkt DD month YYYY" (Dutch)
+- `pt`: "Atualizado em DD de month de YYYY" (Portuguese)
+- `ru`: "Обновлено DD month YYYY г." (Russian)
+- `ua`: "Оновлено DD month YYYY р." (Ukrainian)
+
+**Secondary locations:**
+Each language section also has a `.hours-row .updated` span that must match:
+- English copy: line ~611
+- Spanish copy: line ~630  
+- German copy: line ~649
+
+**Date format rules:**
+- Use full month names in each language (not numbers)
+- Day should NOT have leading zeros (e.g., "9" not "09")
+- Year is always 4 digits
+- Maintain proper capitalization and punctuation for each language
+
+**Example workflow:**
+```bash
+# Find all date instances
+sudo grep -n "Updated\|Actualizado\|Aktualisiert" index.html
+
+# Update all languages (replace DD with actual day)
+sudo sed -i 's/Updated 9 February 2026/Updated 23 February 2026/g' index.html
+sudo sed -i 's/Actualizado el 9 de febrero de 2026/Actualizado el 23 de febrero de 2026/g' index.html
+sudo sed -i 's/Aktualisiert am 9. Februar 2026/Aktualisiert am 23. Februar 2026/g' index.html
+# ... etc for all languages
+```
+
 ## Validation Checklist
 Run after each deploy on both hosts.
 
@@ -87,9 +131,16 @@ SEO checks:
 - live `sitemap.xml` includes canonical menu URLs only
 - staging includes `X-Robots-Tag: noindex, nofollow, noarchive`
 
+Localized date checks:
+- View page source and verify `data-lang-updated` attributes show new date
+- Check each language section has matching `.hours-row .updated` text
+- Ensure no old dates remain in any language
+
 ## Update Workflow
 1) Add new dated EN/ES PDFs to repository.
-2) Keep canonical menu references in `index.html` unchanged.
-3) Deploy staging, run checklist, then deploy live.
-4) Confirm canonical files now point to latest dated EN/ES sources.
-5) Keep a short release note with date and menu source files.
+2) **Update ALL localized "Updated" date strings in index.html for every supported language.**
+3) Keep canonical menu references in `index.html` unchanged.
+4) Commit both PDF additions AND date string updates together.
+5) Deploy staging, run checklist, then deploy live.
+6) Confirm canonical files now point to latest dated EN/ES sources.
+7) Keep a short release note with date and menu source files.
